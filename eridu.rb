@@ -4,6 +4,7 @@ class Eridu < AbstractHandler
   # Configure Sinatra
   use Rack::MethodOverride
   use Rack::Session::Cookie, :key => 'eridu.session', :httponly => true
+  use Rack::OpenID
   use Rack::Recaptcha, :public_key => Conf[:recaptcha, :public_key], :private_key => Conf[:recaptcha, :private_key] if Conf[:recaptcha]
 
   # Load additional routes

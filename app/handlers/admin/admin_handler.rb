@@ -20,21 +20,32 @@ class AdminHandler < AbstractHandler
     admin_erb :stats
   end
 
+  # Login form
+  get '/admin/login/?' do
+    admin_erb :login
+  end
+
   # Login
   post '/admin/login/?' do
     success = if Eridu.development? and params[:bypass]
       true
     else
-      false
+      if resp = request.env[Rack::OpenID::RESPONSE]
+        if resp.status == :success
+          session.clear
+          token = AuthToken.new
+          session[:salt] = token.salt
+          session[:token] = token.to_s
+          true
+        else
+          false
+        end
+      else
+        headers 'WWW-Authenticate' => Rack::OpenID.build_header(:identifier => params['openid_identifier'])
+        throw :halt, [401, 'got openid?']
+      end
     end
-
-    if success
-      session.clear
-      token = AuthToken.new
-      session[:salt] = token.salt
-      session[:token] = token.to_s
-    end
-    redirect '/admin'
+    success ? redirect('/admin') : admin_erb(:login)
   end
 
   # Logout

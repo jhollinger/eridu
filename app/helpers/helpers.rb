@@ -37,7 +37,7 @@ module Helpers
   #  mail user@example.com, 'Foo', 'Some text'
   #  mail user@example.com, 'Foo', 'Some text', '<p>Some text</p>'
   def mail(address, subject_text, text_or_template, html=nil)
-    return false if APP_ENV == :development
+    return false if Eridu.development?
     # Get or render the content
     body_text = text_or_template.is_a?(Symbol) ? erb(:"mailers/#{text_or_template}.text", :layout => false) : text_or_template
     body_html = text_or_template.is_a?(Symbol) \

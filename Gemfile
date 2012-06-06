@@ -14,6 +14,8 @@ gem 'dm-tags'
 gem 'mail', '>=2.4.0'
 gem 'chronic'
 gem 'rack-recaptcha', :require => 'rack/recaptcha'
+gem 'ruby-openid', :require => 'openid'
+gem 'rack-openid', :require => 'rack/openid'
 gem 'RedCloth', :require => 'redcloth'
 gem 'coderay', :require => %w[coderay coderay/for_redcloth]
 gem 'builder'
