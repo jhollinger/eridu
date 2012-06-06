@@ -1,6 +1,6 @@
 # Mail settings. Deleting mail.yml will disable all mail.
-notify: true # Notify me of new comments
 errors: true # Notify me of exceptions
+comments: true # Notify me of new comments
 
 # Mail delivery configuration. See https://github.com/mikel/mail for more info.
 # Examples:
@@ -25,7 +25,7 @@ errors: true # Notify me of exceptions
 #   address: smtp.gmail.com
 #   port: 587
 #   domain: eridublog.com
-#   user_name: you@gmail.net
+#   user_name: you@gmail.com
 #   password: password
 #   authentication: plain
 #   enable_starttls_auto: true

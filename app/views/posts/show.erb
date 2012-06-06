@@ -7,10 +7,10 @@
   <% @post.comments.all(:order => :created_at).each do |comment| %>
   <div class="box">
     <p>
-      <strong><%= comment.author %></strong> says:<br/>
+      <strong><%= h comment.author %></strong> says:<br/>
       <small class="light"><%= comment.created_at.strftime(dtfmt) %></small>
     </p>
-    <%= h comment.body_html %>
+    <%= comment.body_html %>
   </div>
   <% end %>
 <% end %>

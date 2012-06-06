@@ -12,7 +12,7 @@ Dir.glob(ROOT['lib', '**', '*.rb']).each { |lib| require lib }
 
 # Set up mail
 Mail.defaults do
-  method = APP_ENV == :test ? :test : Conf[:mail, :method]
+  method = APP_ENV == :test ? :test : Conf[:mail, :method].to_sym
   delivery_method method, Conf[:mail, :settings] || {}
 end if Conf[:mail]
 

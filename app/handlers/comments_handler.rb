@@ -4,6 +4,7 @@ class CommentsHandler < AbstractHandler
     @post = Post.find_by_permalink(year, month, day, slug)
     @comment = @post.comments.new(params[:comment])
     if @comment.save
+      mail Conf[:author, :email], 'New comment notification', :comment if Conf[:mail, :comments]
       redirect permalink_path(@post)
     else
       erb :"posts/show"
