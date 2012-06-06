@@ -37,9 +37,8 @@ function rand_str() {
 }
 
 // Execute "this" function only every n milliseconds, regardless how frequently it's called
-Function.prototype.only_every = function () {
-  var millisecond_delay = arguments[0] || 1000
-  var name = 'only_every_' + (arguments[1] || rand_str())
+Function.prototype.only_every = function (millisecond_delay, id) {
+  var name = 'only_every_' + id
   if ( !window[name] ) {
     var function_object = this;
     window[name] = setTimeout(function() { function_object(); window[name] = null}, millisecond_delay);
