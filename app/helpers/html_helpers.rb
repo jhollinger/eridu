@@ -3,7 +3,7 @@ module HTMLHelpers
   def errors_for(obj)
     if obj.errors.any?
       errors = obj.errors.values.flatten
-      %Q|<span>Unable to save because of the following errors:</span><ul>#{errors.map { |e| "<li>#{e}</li>" }}</ul>|
+      %Q|<span>Unable to save because of the following errors:</span><ul>#{errors.map { |e| "<li>#{e}</li>" }.join}</ul>|
     end
   end
 

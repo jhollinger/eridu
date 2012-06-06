@@ -6,6 +6,7 @@
 
   <% @post.comments.all(:order => :created_at).each do |comment| %>
   <div class="box">
+    <a name="comment-<%= comment.id %>"></a>
     <p>
       <strong><%= h comment.author %></strong> says:<br/>
       <small class="light"><%= comment.created_at.strftime(dtfmt) %></small>
@@ -16,28 +17,4 @@
 <% end %>
 
 <h3>Post a Comment</h3>
-
-<form accept-charset="UTF-8" action="<%= post_comment_path(@post) %>" id="new_comment" method="post">
-  <%= errors_for @comment if @comment %>
-  <p>
-    <input id="comment_author" name="comment[author]" size="30" type="text" value="<%= @comment.try(:author) %>">
-    <label for="comment_author"><small>Name or <a href="http://openidexplained.com/">OpenID</a> (required)</small></label>
-  </p>
-  <p>
-    <input id="comment_author_email" name="comment[author_email]" size="30" type="text" value="<%= @comment.try(:author_email) %>">
-    <label for="comment_author_email"><small>Email</small></label>
-  </p>
-  <p>
-    <input id="comment_author_url" name="comment[author_url]" size="30" type="text" value="<%= @comment.try(:author_url) %>">
-    <label for="comment_author_url"><small>Website</small></label>
-  </p>
-  <p>
-    <textarea id="comment_body" data-live-preview="#live-preview" name="comment[body]" cols="40" rows="20"><%= @comment.try(:body) %></textarea><br />
-    <small><a href="http://textile.thresholdstate.com/">Textile enabled</a></small>
-  </p>
-
-  <h2>Comment Preview:</h2>
-  <div id="live-preview"></div>
-
-  <p><input name="commit" type="submit" value="Add Comment"></p>
-</form>
+<%= erb :"posts/_new_comment", :locals => {:post => @post} %>

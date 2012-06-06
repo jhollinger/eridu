@@ -1,0 +1,64 @@
+<a name="comment"></a>
+<form accept-charset="UTF-8" action="<%= permalink_path(@post) %>" id="new_comment" method="post">
+  <div class="recaptcha-related">
+    <%= errors_for @comment if @comment %>
+    <p>
+      <input id="comment_author" name="comment[author]" size="30" type="text" value="<%= @comment.try(:author) %>">
+    <label for="comment_author"><small>Name or <a href="http://openidexplained.com/">OpenID</a> (required)</small></label>
+    </p>
+    <p>
+      <input id="comment_author_email" name="comment[author_email]" size="30" type="text" value="<%= @comment.try(:author_email) %>">
+      <label for="comment_author_email"><small>Email</small></label>
+    </p>
+    <p>
+      <input id="comment_author_url" name="comment[author_url]" size="30" type="text" value="<%= @comment.try(:author_url) %>">
+      <label for="comment_author_url"><small>Website</small></label>
+    </p>
+    <p>
+      <textarea id="comment_body" data-live-preview="#live-preview" name="comment[body]" cols="40" rows="20"><%= @comment.try(:body) %></textarea><br />
+      <small><a href="http://textile.thresholdstate.com/">Textile enabled</a></small>
+    </p>
+  </div>
+
+  <h3>Comment Preview</h3>
+  <div id="live-preview"></div>
+
+<% if show_recaptcha? %>
+  <p><input type="button" class="recaptcha-related show-recaptcha" value="Post Comment"></p>
+
+  <div class="hidden recaptcha-related">
+    <h4>Please verify your sentience:</h4>
+    <%= recaptcha_tag(:ajax, :display => {:theme => 'white'}) %>
+    <p><input type="submit" value="Post Comment"> or <a href="#" class="show-recaptcha">cancel</a></p>
+  </div>
+<% else %>
+  <p><input type="submit" value="Post Comment"></p>
+<% end %>
+</form>
+
+<script type="text/javascript">
+  $(function() {
+  <% if show_recaptcha? %>
+    // Scroll to the bottom of the page when showing/hiding recaptcha fields
+    $('.recaptcha-related').bind('recaptcha', function() {
+      $(this).toggle()
+      location.hash = 'comment'
+    })
+
+    // Trigger reCAPTCHA show/hide on click
+    $('.show-recaptcha').click(function() {
+      $('.recaptcha-related').trigger('recaptcha')
+      return false
+    })
+  <% end %>
+
+  <% if @comment and show_recaptcha? %>
+    // Show reCAPTCHA because it's wrong
+    $('.recaptcha-related').trigger('recaptcha')
+
+  <% elsif @comment.try(:errors).try(:any?) %>
+    // Jump to form errors
+    location.hash = 'comment'
+  <% end %>
+  })
+</script>

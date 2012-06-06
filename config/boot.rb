@@ -16,10 +16,6 @@ Mail.defaults do
   delivery_method method, Conf[:mail, :settings] || {}
 end if Conf[:mail]
 
-# Set up reCAPTCHA
-RCC_PUB = Conf[:recaptcha, :public_key]
-RCC_PRIV = Conf[:recaptcha, :private_key]
-
 # Initialize database connection
 DataMapper::Logger.new($stdout, :debug) if APP_ENV == :development
 DataMapper.setup(:default, Conf[:database])

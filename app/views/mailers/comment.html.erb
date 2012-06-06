@@ -1,3 +1,2 @@
-<p><%= @comment.author %> says:</p>
-
-<%= @comment.body_html %>
+<% path = "#{Conf[:url]}#{permalink_comment_path(@comment)}" %>
+<a href="<%= path %>"><%= path %></a>

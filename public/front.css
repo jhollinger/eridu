@@ -227,6 +227,8 @@ img {
   box-shadow: 0 0 2px 2px #bbb;
 }
 
+.hidden { display: none }
+
 /* responsiveness */
 
 @media (max-width: 1075px) {

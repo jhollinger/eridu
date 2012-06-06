@@ -5,20 +5,25 @@ module Helpers
     "/#{date.year}/#{date.strftime('%m')}/#{date.strftime('%d')}/#{post.slug}"
   end
 
+  # Public path to a comment
+  def permalink_comment_path(comment)
+    "#{permalink_path(comment.post)}#comment-#{comment.id}"
+  end
+
   # Public path to a page
   def page_path(page)
     "/pages/#{page.slug}"
-  end
-
-  # Path to which a comment is posted, for a given post
-  def post_comment_path(post)
-    "#{permalink_path(post)}/comments"
   end
 
   # Set the page title
   def title(title=nil)
     @title ||= title unless title.nil?
     @title
+  end
+
+  # Whether or not to show the reCAPTCHA form
+  def show_recaptcha?
+    Conf[:recaptcha] && !session[:sentience_verified] 
   end
 
   # Returns true if the user is signed in, false if not
