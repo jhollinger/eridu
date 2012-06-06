@@ -1,0 +1,28 @@
+<form accept-charset="UTF-8" action="<%= @page.id ? admin_page_path(@page) : '/admin/pages' %>" method="post" id="new_page" class="box">
+  <%= errors_for @page %>
+  <input type="hidden" name="_method" value="<%= @page.id ? 'put' : 'post' %>" />
+  <p>
+    <label for="page_title">Title</label><br />
+    <input id="page_title" maxlength="255" size="50" name="page[title]" type="text" value="<%= @page.title %>" autofocus="autofocus">
+  </p>
+
+  <p>
+    <label for="page_body">Body</label><br />
+    <textarea id="page_body" name="page[body]" cols="90" rows="20"><%= @page.body %></textarea><br />
+    <span class="light"><a href="http://textile.thresholdstate.com/">Textile enabled</a>. <input type="button" id="show_preview" value="Preview" /></span>
+  </p>
+
+  <p>
+    <label for="page_slug">Slug</label><br />
+    <input id="page_slug" maxlength="255" size="50" name="page[slug]" type="text" value="<%= @page.slug %>"><br />
+    <small class="light">Leave blank for an auto-generated slug based on the title</small>
+  </p>
+
+  <p><input type="submit" value="Save Page" /> or <a href="/admin/pages">cancel</a></p>
+</form>
+
+<script type="text/javascript">
+  $(function() {
+    bind_textile_preview('#show_preview', '#page_body')
+  })
+</script>

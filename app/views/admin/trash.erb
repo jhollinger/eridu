@@ -1,0 +1,90 @@
+<h1>Trash</h1>
+
+<div class="box">
+  <h2>Posts</h2>
+<% if @posts.empty? %>
+  <em>Empty</em>
+<% else %>
+  <table>
+    <tr class="shiny">
+      <th>Title</th>
+      <th>Excerpt</th>
+      <th></th>
+    </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= link_to h(post.body[0,50]), preview_post_path(post), :class => 'preview', :rel => '#preview' %>...</td>
+      <td>
+        <%= link_to icon_tag(:restore), restore_post_path(post), :method => 'put', :confirm => "Do you want to restore #{post.title}?" %>
+        <%= link_to icon_tag(:delete), purge_post_path(post), :method => 'delete', :confirm => "Are you sure you want to PERMANENTLY DELETE #{post.title}?" %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+</div>
+
+<div class="box">
+  <h2>Comments</h2>
+<% if @comments.empty? %>
+  <em>Empty</em>
+<% else %>
+  <table>
+    <tr class="shiny">
+      <th>Author</th>
+      <th>Post</th>
+      <th>Comment</th>
+      <th></th>
+    </tr>
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.author %></td>
+      <td><%= comment.title %></td>
+      <td><%= link_to h(comment.body[0,50]), preview_comment_path(comment), :class => 'preview', :rel => '#preview' %>...</td>
+      <td>
+        <%= link_to icon_tag(:restore), restore_comment_path(comment), :method => 'put', :confirm => "Do you want to restore #{comment.author}'s comment?" %>
+        <%= link_to icon_tag(:delete), purge_comment_path(comment), :method => 'delete', :confirm => "Are you sure you want to PERMANENTLY DELETE this comment by #{comment.author}?" %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+</div>
+
+<div class="box">
+  <h2>Pages</h2>
+<% if @pages.empty? %>
+  <em>Empty</em>
+<% else %>
+  <table>
+    <tr class="shiny">
+      <th>Title</th>
+      <th>Excerpt</th>
+      <th></th>
+    </tr>
+  <% @pages.each do |page| %>
+    <tr>
+      <td><%= page.title %></td>
+      <td><%= link_to h(page.body[0,50]), preview_page_path(page), :class => 'preview', :rel => '#preview' %>...</td>
+      <td>
+        <%= link_to icon_tag(:restore), restore_page_path(page), :method => 'put', :confirm => "Do you want to restore #{page.title}?" %>
+        <%= link_to icon_tag(:delete), purge_page_path(page), :method => 'delete', :confirm => "Are you sure you want to PERMANENTLY DELETE #{page.title}?" %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('.preview[rel]').overlay({
+      mask: {color: '#000', opacity: 0.4},
+      onBeforeLoad: function() {
+        var wrap = this.getOverlay().find('.contentWrap')
+        wrap.load(this.getTrigger().attr('href'))
+      }
+    })
+  })
+</script>

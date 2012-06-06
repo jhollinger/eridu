@@ -1,0 +1,3 @@
+<h1>Editing post - <%= link_to @post.title, permalink_path(@post) %></h1>
+
+<%= admin_erb :"posts/_form", :layout => false %>

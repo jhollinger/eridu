@@ -1,0 +1,27 @@
+<h1>Comments</h1>
+
+<div class="box">
+  <table>
+    <tr class="shiny">
+      <th>Created&nbsp;at</th>
+      <th>Commentor</th>
+      <th>Excerpt</th>
+      <th>Post</th>
+      <th></th>
+    </tr>
+
+  <% date = '%b %e, %Y' %>
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.created_at.strftime(date) %></td>
+      <td><%= comment.author %></td>
+      <td><%= link_to h(comment.blurb), admin_comment_path(comment) %></td>
+      <td><%= link_to comment.post.title, admin_post_path(comment.post) %></td>
+      <td>
+        <%= link_to icon_tag(:edit), admin_comment_path(comment) %>
+        <%= link_to icon_tag(:delete), admin_comment_path(comment), :method => :delete, :confirm => "Are you sure you want to delete the comment from #{comment.author}" %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>

@@ -1,0 +1,36 @@
+<% @exception = env['sinatra.error'] %>
+<% if io = env['rack.input'] %>
+<%   io.rewind if io.respond_to?(:rewind) %>
+<%   @request_body = io.read %>
+<% end %>
+
+A <%= @exception.class.to_s %> occured: <%= @exception.to_s %>
+
+<% unless @request_body.blank? %>
+
+===================================================================
+Request Body:
+===================================================================
+
+<%= @request_body.gsub(/^/, ' ') %>
+<% end %>
+
+<% if @exception.respond_to?(:backtrace) %>
+===================================================================
+Backtrace:
+===================================================================
+
+<%= @exception.backtrace.join("\n ") %>
+<% end %>
+
+===================================================================
+Rack Environment:
+===================================================================
+
+PID: <%= $$ %>
+PWD: <%= Dir.getwd %>
+
+<%= env.to_a.
+sort{|a,b| a.first <=> b.first}.
+map{ |k,v| "%-25s%p" % [k+':', v] }.
+join("\n ") %>

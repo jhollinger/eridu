@@ -1,0 +1,2 @@
+require './eridu'
+run Eridu

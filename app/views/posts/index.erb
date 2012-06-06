@@ -1,0 +1,3 @@
+<% @posts.each do |post| %>
+  <%= erb :"posts/_show", :locals => {:post => post, :body => :splash} %>
+<% end %>

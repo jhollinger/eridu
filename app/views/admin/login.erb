@@ -1,0 +1,12 @@
+<h1><%= Conf[:title] %></h1>
+
+<form id="login" class="center box" accept-charset="UTF-8" action="/admin/login" method="post">
+  <h2>Halt! Who goes there?</h2>
+  <p><input type="text" name="openid_url" autofocus="autofocus" /></p>
+  <p>
+    <input type="submit" value="Login with OpenID" />
+  <% if Eridu.development? %>
+    <input type="checkbox" name="bypass" id="bypass" value="1" checked="checked" /><label for="bypass">Bypass credentials</label>
+  <% end %>
+  </p>
+</form>

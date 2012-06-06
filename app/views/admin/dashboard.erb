@@ -1,0 +1,28 @@
+<h1><%= Conf[:title] %></h1>
+
+<div class="boxes">
+  <div class="box">
+    <h2>Latest Posts</h2>
+    <table>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.title, admin_post_path(post) %></td>
+        <td class="light"><%= post.published_at.strftime('%b %e') %></td>
+        <td><%= link_to post.comments.count, permalink_path(post) %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+
+  <div class="box">
+    <h2>Latest Comments</h2>
+    <table>
+    <% @comments.each do |post, comments| %>
+      <tr>
+        <td><%= link_to post.title, permalink_path(post) %><br /><%= comments.map { |c| c.author }.join(', ') %></td>
+        <td class="light"><%= post.published_at.strftime('%b %e') %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>

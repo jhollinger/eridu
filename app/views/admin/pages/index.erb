@@ -1,0 +1,22 @@
+<h1>Your pages</h1>
+
+<div class="box">
+  <table>
+    <tr class="shiny">
+      <th>Title</th>
+      <th>Excerpt</th>
+      <th></th>
+    </tr>
+
+  <% @pages.each do |page| %>
+    <tr>
+      <td><%= link_to page.title, page_path(page) %></td>
+      <td><%= h page.blurb %></td>
+      <td>
+        <%= link_to icon_tag(:edit), admin_page_path(page) %>
+        <%= link_to icon_tag(:delete), admin_page_path(page), :method => :delete, :confirm => "Are you sure you want to delete #{page.title}" %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>

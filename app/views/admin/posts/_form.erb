@@ -1,0 +1,47 @@
+<form accept-charset="UTF-8" action="<%= @post.id ? admin_post_path(@post) : '/admin/posts' %>" method="post" id="new_post" class="box">
+  <%= errors_for @post %>
+  <input type="hidden" name="_method" value="<%= @post.id ? 'put' : 'post' %>" />
+  <p>
+    <label for="post_title">Title</label><br />
+    <input id="post_title" maxlength="255" size="50" name="post[title]" type="text" value="<%= @post.title %>" autofocus="autofocus">
+  </p>
+
+  <p>
+    <label for="post_body">Body</label><br />
+    <textarea id="post_body" name="post[body]" cols="90" rows="20"><%= @post.body %></textarea><br />
+    <span class="light"><a href="http://textile.thresholdstate.com/">Textile enabled</a>. <input type="button" id="show_preview" value="Preview" /></span>
+  </p>
+
+  <p>
+    <label for="post_tag_list">Tags</label><br />
+    <input id="post_tag_list" maxlength="255" size="50" name="post[tag_list]" type="text" value="<%= @post.tag_list.join(', ') %>"><br />
+    <small class="light">Comma separated: ruby, rails...</small>
+  </p>
+
+  <p>
+    <label for="post_published_at">Published at</label><br />
+    <input id="post_published_at" maxlength="255" size="50" name="post[published_at_natural]" type="text" value="<%= @post.published_at.strftime('%Y-%m-%d %H:%M') unless @post.published_at.nil? %>"><br />
+    <small class="light">Example: now, yesterday, 1 hour from now, <a href="http://chronic.rubyforge.org/">more&hellip;</a></small>
+  </p>
+
+  <p>
+    <label for="post_slug">Slug</label><br />
+    <input id="post_slug" maxlength="255" size="50" name="post[slug]" type="text" value="<%= @post.slug %>"><br />
+    <small class="light">Leave blank for an auto-generated slug based on the title</small>
+  </p>
+
+  <p>
+    <input name="post[minor_edit]" type="hidden" value="0">
+    <input id="post_minor_edit" name="post[minor_edit]" type="checkbox" value="1" <%= 'checked="checked"' if @post.id %>>Minor edit</label>
+    <label for="post_minor_edit" name="post[minor_edit]"><br />
+    <small class="light">Minor edits will not show up as refreshed in feed readers. Use this to fix spelling mistakes and the like.</small>
+  </p>
+
+  <p><input type="submit" value="Save Post" /> or <a href="/admin/posts">cancel</a></p>
+</form>
+
+<script type="text/javascript">
+  $(function() {
+    bind_textile_preview('#show_preview', '#post_body')
+  })
+</script>

@@ -1,0 +1,3 @@
+# reCAPTCHA settings for comments. Deleting recaptcha.yml will disable reCAPTCHA.
+# public_key: dummy
+# private_key: dummy

@@ -1,0 +1,11 @@
+<h2><%= link_to post.title, permalink_path(post) %></h2>
+
+<%= post.body_html %>
+
+<p class="light">
+  Posted on <%= post.published_at.strftime('%B %e, %Y') %>
+  | <%= post.comments.count %> comments
+<% unless post.tag_list.empty? %>
+  | Tagged as <%= post.tag_list.map { |tag| link_to tag, "/#{tag}" }.join(', ') %>
+<% end %>
+</p>

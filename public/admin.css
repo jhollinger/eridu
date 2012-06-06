@@ -1,0 +1,105 @@
+body { background-color: #ddd }
+
+a, a:visited {
+  text-decoration: none;
+  font-weight: bold;
+  color: #555;
+}
+
+#main { padding: 0px 10px 10px 10px }
+h1 { margin: 10px 0px }
+h1, h2, h3 { color: #333; text-shadow: 0px 0px 3px #aaa }
+
+.shiny {
+  background-color: rgb(35,35,35);
+  background: -moz-linear-gradient(-90deg, rgb(50,50,50), rgb(20,20,20));
+  background: -webkit-gradient(linear, center top, center bottom, from(rgb(40,40,40)), to(rgb(30,30,30)));
+  box-shadow: 0 0 5px #555;
+}
+.shiny, .shiny a, .shiny a:visited {
+  color: #eee;
+  font-weight: bold;
+}
+
+#nav {
+  margin: 0px;
+  padding: 10px;
+}
+
+#nav > li {
+  list-style-type: none;
+  padding: 0px 10px 0px 0px;
+  margin: 0px;
+  display: inline;
+}
+#nav > li > a, #nav > li > a:visited { text-decoration: none }
+#nav > li > a.selected, #nav > li > a:hover { border-bottom: 2px solid #eee }
+
+#login input[type=text] {
+  font-size: 15pt;
+  text-align: center;
+  padding: 3px;
+}
+
+.box {
+  background-color: #eee;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.box > h2:first-of-type { margin-top: 0px }
+.boxes { overflow: auto }
+.boxes > .box { float: left; margin-right: 10px }
+.boxes > .box:last-of-type { margin-right: 0px }
+
+img.icon { margin-bottom: -4px }
+.center { text-align: center }
+
+table { border-collapse: collapse }
+table td {
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+}
+table tr:last-of-type > td {
+  padding-bottom: 0px;
+  border-bottom: 0px solid #fff;
+}
+
+/* Overlay */
+
+.overlay {
+  /* must be initially hidden */
+  display:none;
+  height: 80%;
+  width: 80%;
+
+  /* place overlay on top of other elements */
+  z-index:10000;
+
+  /* styling */
+  background: rgb(0,0,0); /* Fallback for some browsers */
+  background: rgba(0,0,0,0.9); /* Fallback for some browsers */
+  padding: 1em;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 25px #000;
+}
+.overlay, .overlay a, .overlay a:visited, .overlay h1, .overlay h2, .overlay h3 { color: #f6f6f6 }
+
+/* close button positioned on upper right corner */
+.overlay .close {
+  background-image: url(/images/overlay-close.png);
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  cursor: pointer;
+  height: 28px;
+  width: 28px;
+}
+
+/* For use with loading content via ajax */
+/* container for external content. uses vertical scrollbar, if needed */
+.overlay div.contentWrap {
+  height: 100%;
+  padding-right: 5px;
+  overflow-y: auto;
+}

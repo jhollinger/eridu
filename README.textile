@@ -1,0 +1,47 @@
+h1. Eridu
+
+A Sinatra blogging app for the classy developer.
+
+Eridu is heavily inspired by "Enki":https://github.com/xaviershay/enki. Coders know that *hacking code*, not checking preference boxes or installing plugins, is the easiest and best way to customize something. For this, you need a *clean, simple, easy to understand* code base. Eridu seeks a good balance between simplicity and utility.
+
+h2. Quick Start
+
+...
+
+h2. Philosophy
+
+* /yyyy/mm/dd/post-title is a good URL for your posts
+* Atom is a good publishing standard
+* Google does search better than you or I
+* You don’t need a plugin system when you’ve got a lean, clean code base
+* OpenID is better than yet-another-auth system
+* Textile is awesome
+* Sinatra is perfect for this; Ruby on Rails is overkill
+* Everyone wants live comment preview, reCAPTCHA spam protection, and email notifications
+* Few really want multiple sites, authors, skins and arcane templating languages
+* Responsive layouts are good
+* You should be running Ruby 1.9
+
+Framework choices aside, Eridu differs from its progenitor, Enki, mainly in the number of bundled features. These include reCAPTCHA spam protection, email notifications, and a responsive layout. While Enki leaves these "extras" as an exercise to the reader, Eridu pragmatically includes these de facto necessities.
+
+h2. Enabling Optional Features
+
+Eridu includes several optional features that are necessarily disabled by default: reCAPTCHA spam protection and email notifications. To enable them, look in @config/recaptcha.yml.template@ and @config/mail.yml.template@.
+
+h2. Compatibility
+
+Tested on MySQL, Postgres, and SQLite. Heroku should be possible, but is untested.
+
+Enki and Eridu are so similar that @rake db:migrate_from_enki@ easily converts an Enki database to Eridu (it will leave some unused tables and columns behind, though). Also their URL structures are identical, so your existing links and page rankings won't even notice.
+
+h2. Development Notes
+
+The main public face of the app is in @eridu.rb@, and additional routes are under @app/handlers@. Otherwise, the code layout is very similar to Rails'.
+
+h2. License
+
+Apache - See LICENSE
+
+Admin design heavily inspired by "Enki":https://github.com/xaviershay/enki and "Habari":http://www.habariproject.org/en/
+
+Front-end design heavily inspired by "jscal.es":https://github.com/prezjordan/jscal.es and "Dorothy":https://github.com/cloudhead/dorothy
