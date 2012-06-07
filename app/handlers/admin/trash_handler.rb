@@ -4,9 +4,9 @@ class AdminTrashHandler < AbstractHandler
   end
 
   get '/admin/trash/?' do
-    @posts = DB['select id, title, body from posts where deleted_at is not null order by published_at desc']
-    @comments = DB['select c.id, c.author, c.body, p.title from comments c left outer join posts p on c.post_id=p.id where c.deleted_at is not null order by c.created_at desc']
-    @pages = DB['select id, title, body from pages where deleted_at is not null order by title']
+    @posts = DB['select id, title, body from posts where deleted = ? order by published_at desc', true]
+    @comments = DB['select c.id, c.author, c.body, p.title from comments c left outer join posts p on c.post_id=p.id where c.deleted = ? order by c.created_at desc', true]
+    @pages = DB['select id, title, body from pages where deleted = ? order by title', true]
     title 'Trash'
     admin_erb :trash
   end
@@ -24,18 +24,18 @@ class AdminTrashHandler < AbstractHandler
 
     # Ajax preview path
     get "/admin/trash/#{thing}s/:id/?" do |id|
-      DB['select body_html from ? where id = ? and deleted_at is not null limit 1', "#{thing}s", id].first
+      DB["select body_html from #{thing}s where id = ? and deleted = ? limit 1", id.to_i, true].first
     end
 
     # Restore an item
     put "/admin/trash/#{thing}s/:id/restore/?" do |id|
-      DB['update ? set deleted_at = null where id = ?', "#{thing}s", id]
+      DB["update #{thing}s set deleted = ? where id = ?", false, id.to_i]
       redirect '/admin/trash'
     end
 
     # Permanently delete an item
     delete "/admin/trash/#{thing}s/:id/delete/?" do |id|
-      DB['delete from ? where id = ?', "#{thing}s", id]
+      DB["delete from #{thing}s where id = ?", id.to_i]
       redirect '/admin/trash'
     end
   end

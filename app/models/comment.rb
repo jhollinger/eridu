@@ -3,7 +3,7 @@ class Comment
   include DataMapper::Resource
 
   property :id, Serial
-  property :post_id, Integer, :required => true
+  property :post_id, Integer, :required => true, :index => true
   property :author, String, :required => true
   property :author_url, String
   property :author_email, String
@@ -12,7 +12,7 @@ class Comment
   property :body_html, Text, :required => true
   property :created_at, DateTime
   property :updated_at, DateTime
-  property :deleted_at, ParanoidDateTime
+  property :deleted, ParanoidBoolean, :index => true
 
   belongs_to :post
 

@@ -23,7 +23,10 @@ DataMapper.setup(:default, Conf[:database])
 Dir.glob(ROOT['app', 'models', '*.rb']).sort.each { |model| require model }
 DataMapper.finalize
 # Raw db access, be careful!
-DB = lambda { |*args| repository(:default).adapter.select(*args) }
+DB = proc do |*args|
+  adapter = repository(:default).adapter
+  args.first =~ /^select /i ? adapter.select(*args) : adapter.execute(*args)
+end
 
 # Load helpers and handlers
 Dir.glob(ROOT['app', 'helpers', '**', '*.rb']).each { |helper| require helper }
