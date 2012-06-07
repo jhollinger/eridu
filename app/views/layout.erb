@@ -18,19 +18,14 @@
       <p><%= Conf[:tagline] %></p>
 
       <div id="links" class="large">
-      <% Page.ordered.each do |page| %>
-        &gt; <%= link_to page.title, page_path(page) %><br />
+      <% [['Homepage', '/'], *Page.ordered.map { |p| [p.title, page_path(p)] }, *Conf[:links]].each do |title, url| %>
+        &gt; <%= link_to title, url %><br />
       <% end %>
       <br />
 
       <% Tag.ordered.each do |tag| %>
         &gt; <%= link_to tag.name, "/#{tag}" %><br />
       <% end %>
-      <br />
-
-      <% Conf[:links].each do |title, url| %>
-        &gt; <%= link_to title, url %>
-      <% end if Conf[:links] %>
       </div>
     </header>
 
