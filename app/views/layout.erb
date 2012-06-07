@@ -18,7 +18,7 @@
       <p><%= Conf[:tagline] %></p>
 
       <div id="links" class="large">
-      <% [['Homepage', '/'], *Page.ordered.map { |p| [p.title, page_path(p)] }, *Conf[:links]].each do |title, url| %>
+      <% header_links.each do |title, url| %>
         &gt; <%= link_to title, url %><br />
       <% end %>
 
@@ -27,6 +27,16 @@
       <% Tag.ordered.each do |tag| %>
         &gt; <%= link_to tag.name, "/#{tag}" %><br />
       <% end %>
+      </div>
+
+      <div id="links-small" class="small">
+      <% header_links.each do |title, url| %>
+        <span class="link"><%= link_to title, url %></span>
+      <% end %>
+      </div>
+
+      <div class="large sink">
+        <a href="http://github.com/jordanhollinger.com/eridu">powered by eridu</a>
       </div>
     </header>
 

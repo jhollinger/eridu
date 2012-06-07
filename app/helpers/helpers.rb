@@ -1,4 +1,10 @@
 module Helpers
+  # Set the page title
+  def title(title=nil)
+    @title ||= title unless title.nil?
+    @title
+  end
+
   # Public path to a post
   def permalink_path(post)
     date = post.published_at
@@ -15,10 +21,9 @@ module Helpers
     "/pages/#{page.slug}"
   end
 
-  # Set the page title
-  def title(title=nil)
-    @title ||= title unless title.nil?
-    @title
+  # Returns and caches an array of links for the header
+  def header_links
+    @header_links ||= [['homepage', '/'], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *Conf[:links]]
   end
 
   # Whether or not to show the reCAPTCHA form
