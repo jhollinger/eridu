@@ -21,7 +21,8 @@
       <% [['Homepage', '/'], *Page.ordered.map { |p| [p.title, page_path(p)] }, *Conf[:links]].each do |title, url| %>
         &gt; <%= link_to title, url %><br />
       <% end %>
-      <br />
+
+        <br />
 
       <% Tag.ordered.each do |tag| %>
         &gt; <%= link_to tag.name, "/#{tag}" %><br />
