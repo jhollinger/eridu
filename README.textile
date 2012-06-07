@@ -51,7 +51,7 @@ h2. Compatibility
 
 Tested on MySQL, Postgres, and SQLite. Heroku should be possible, but is untested.
 
-Enki and Eridu are so similar that @rake db:migrate_from_enki@ easily converts an Enki database to Eridu (it will leave some unused tables and columns behind, though). Also their URL structures are identical, so your existing links and page rankings won't even notice.
+Enki and Eridu are so similar that @rake db:migrate:enki@ easily converts an Enki database to Eridu (it will leave some unused tables and columns behind, though). Also their URL structures are identical, so your existing links and page rankings won't even notice.
 
 h2. Development Notes
 
