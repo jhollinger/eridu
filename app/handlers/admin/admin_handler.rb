@@ -31,21 +31,22 @@ class AdminHandler < AbstractHandler
       true
     else
       if resp = request.env[Rack::OpenID::RESPONSE]
-        if resp.status == :success
-          session.clear
-          token = AuthToken.new
-          session[:salt] = token.salt
-          session[:token] = token.to_s
-          true
-        else
-          false
-        end
+        resp.status == :success
       else
         headers 'WWW-Authenticate' => Rack::OpenID.build_header(:identifier => params['openid_identifier'])
         throw :halt, [401, 'got openid?']
       end
     end
-    success ? redirect('/admin') : admin_erb(:login)
+
+    if success
+      session.clear
+      token = AuthToken.new
+      session[:salt] = token.salt
+      session[:token] = token.to_s
+      redirect('/admin')
+    else
+      admin_erb(:login)
+    end
   end
 
   # Logout
