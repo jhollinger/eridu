@@ -30,7 +30,7 @@
     <small class="light">Leave blank for an auto-generated slug based on the title</small>
   </p>
 
-<% unless @post.id %>
+<% if @post.id %>
   <p>
     <input name="post[minor_edit]" type="hidden" value="0">
     <input id="post_minor_edit" name="post[minor_edit]" type="checkbox" value="1" <%= 'checked="checked"' if @post.id %>>Minor edit</label>
