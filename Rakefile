@@ -14,8 +14,8 @@ namespace :db do
   end
 
   namespace :migrate do
+    desc "Convert from Enki's schema to Eridu's"
     task :enki do
-      desc "Convert from Enki's schema to Eridu's"
       class Tagging
         property :taggable_type, Class, :required => true, :default => 'Post'
         property :tag_context, String, :required => true, :default => 'tags'
