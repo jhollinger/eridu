@@ -9,7 +9,7 @@ class Page
   property :body_html, Text, :required => true
   property :created_at, DateTime
   property :updated_at, DateTime
-  property :deleted, ParanoidBoolean, :index => true
+  property :deleted_at, ParanoidDateTime, :index => true
 
   before :valid?, :set_data!
 

@@ -15,7 +15,7 @@ class Post
   property :edited_at, DateTime, :required => true
   property :created_at, DateTime
   property :updated_at, DateTime
-  property :deleted, ParanoidBoolean, :index => true
+  property :deleted_at, ParanoidDateTime, :index => true
 
   has n, :comments
   has_tags_on :tags
@@ -71,6 +71,6 @@ class Post
   end
 
   def destroy_comments
-    comments.update! :deleted => true
+    comments.update! :deleted_at => Time.now
   end
 end
