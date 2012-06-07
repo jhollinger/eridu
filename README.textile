@@ -7,18 +7,17 @@ Eridu is heavily inspired by "Enki":https://github.com/xaviershay/enki. Coders k
 h2. Quick Start
 
 <pre>
-git clone git://github.com/jhollinger/eridu.git enki
+# You may need libxml2 and libxslt1 and their headers
+# On Debian-based systems: apt-get install libxml2-dev libxslt1-dev
+# On Mac OS X: no action required
+
+git clone git://github.com/jhollinger/eridu.git eridu
 cd eridu
 bundle install              # Install all the required gems
 
 cp config/database.yml.template config/database.yml
 cp config/eridu.yml.template config/eridu.yml
-# Edit the above configuration files to taste
-# Optionally, also copy and edit mail.yml.template and recaptcha.yml.template
-
-# You may need libxml2 and libxslt1 and their headers
-# On Debian-based systems: apt-get install libxml2-dev libxslt1-dev
-# On Mac OS X: no action required
+# Edit above configuration files to taste
 
 rake db:migrate             # Initialize the database
 bundle exec rspec spec/     # Run tests
@@ -31,7 +30,7 @@ ruby eridu.rb               # Start the server at http://localhost:4567.
 h2. Philosophy
 
 * /yyyy/mm/dd/post-title is a good URL for your posts
-* Atom is a good publishing standard
+* Atom is a good publishing protocol
 * Google does search better than you or I
 * You don’t need a plugin system when you’ve got a lean, clean code base
 * OpenID is better than yet-another-auth system
