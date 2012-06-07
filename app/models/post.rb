@@ -9,7 +9,6 @@ class Post
   property :slug, String, :length => 255, :required => true, :index => true, :unique => true
   property :body, Text, :required => true
   property :body_html, Text, :required => true
-  property :active, Boolean, :default => true, :required => true
   property :approved_comments_count, Integer, :default => 0, :required => true
   property :published_at, DateTime
   property :edited_at, DateTime, :required => true
