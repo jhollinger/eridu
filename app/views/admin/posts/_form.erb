@@ -30,12 +30,14 @@
     <small class="light">Leave blank for an auto-generated slug based on the title</small>
   </p>
 
+<% unless @post.id %>
   <p>
     <input name="post[minor_edit]" type="hidden" value="0">
     <input id="post_minor_edit" name="post[minor_edit]" type="checkbox" value="1" <%= 'checked="checked"' if @post.id %>>Minor edit</label>
     <label for="post_minor_edit" name="post[minor_edit]"><br />
     <small class="light">Minor edits will not show up as refreshed in feed readers. Use this to fix spelling mistakes and the like.</small>
   </p>
+<% end %>
 
   <p><input type="submit" value="Save Post" /> or <a href="/admin/posts">cancel</a></p>
 </form>
