@@ -22,9 +22,10 @@ class Post
   before :valid?, :set_data!
   before :destroy, :destroy_comments
 
+  # Returns recently published Posts
   def self.recent(options = {})
-    options = {:published_at.lt => Time.now, :limit => 10}.merge(options)
-    Post.ordered.all(options)
+    options = {:limit => 10}.merge(options)
+    Post.published.ordered.all(options)
   end
 
   def self.find_by_permalink(year, month, day, slug, options = {})
@@ -35,6 +36,11 @@ class Post
       post = nil
     end
     post || raise(Sinatra::NotFound)
+  end
+
+  # Returns only published Posts
+  def self.published
+    all(:published_at.lt => Time.now)
   end
 
   def self.ordered
