@@ -7,8 +7,8 @@
   </p>
 
   <p>
-    <label for="post_teaser">Teaser</label> <a href="#" class="toggle-teaser">[show/hide teaser]</a>
-    <div class="teaser<%= ' hidden' unless @post.teaser?%>">
+    <label for="post_teaser">Teaser</label> <a href="#" class="toggle-teaser<%= ' hidden' if @post.teaser? %>">[show]</a> <a href="#" class="toggle-teaser<%= ' hidden' unless @post.teaser? %>">[hide]</a>
+    <div class="teaser<%= ' hidden' unless @post.teaser? %>">
       <small><em>If given, a teaser will be shown on the home page with a "read more" link, instead of the body</em></small><br />
       <textarea id="post_teaser" name="post[teaser]" cols="90" rows="20"><%= @post.teaser %></textarea><br />
       <span class="light"><a href="http://textile.thresholdstate.com/">Textile enabled</a>. <input type="button" class="show-preview" data-preview-src="#post_teaser" value="Preview" /></span>
@@ -54,12 +54,14 @@
 <script type="text/javascript">
   $(function() {
     $('.toggle-teaser').click(function() {
+      $('.toggle-teaser').toggle()
       $('.teaser').slideToggle(function() {
         if ( $(this).is(':visible') ) $('#post_teaser').focus()
         else $('#post_body').focus()
       })
       return false
     })
+
     bind_textile_preview('.show-preview')
   })
 </script>
