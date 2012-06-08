@@ -27,6 +27,9 @@ namespace :db do
       # Convert existing tagging data
       Tagging.update!(:taggable_type => 'Post', :tag_context => 'tags')
 
+      # Set comment count
+      Post.all.each(&:set_comments_count!)
+
       # Fix date format for sqlite
       if DataMapper.repository(:default).adapter.class.name =~ /sqlite/i
         fields = [:published_at, :edited_at, :created_at, :updated_at]

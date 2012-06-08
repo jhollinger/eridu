@@ -8,7 +8,7 @@
       <tr>
         <td><%= link_to post.title, admin_post_path(post) %></td>
         <td class="light"><%= post.published_at.strftime('%b %e') %></td>
-        <td><%= link_to post.comments.count, permalink_path(post) %></td>
+        <td><%= link_to post.comments_count, permalink_path(post) %></td>
       </tr>
     <% end %>
     </table>

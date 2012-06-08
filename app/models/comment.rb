@@ -44,6 +44,6 @@ class Comment
   end
 
   def denormalize
-    self.post.denormalize_comments_count!
+    self.post.set_comments_count!
   end
 end

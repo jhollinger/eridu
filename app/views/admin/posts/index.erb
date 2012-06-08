@@ -16,7 +16,7 @@
       <td><%= post.published_at.strftime(date) %></td>
       <td><%= link_to post.title, permalink_path(post) %></td>
       <td><%= h post.blurb %></td>
-      <td><%= post.comments.count %></td>
+      <td><%= post.comments_count %></td>
       <td>
         <%= link_to icon_tag(:edit), admin_post_path(post) %>
         <%= link_to icon_tag(:delete), admin_post_path(post), :method => :delete, :confirm => "Are you sure you want to delete #{post.title}" %>

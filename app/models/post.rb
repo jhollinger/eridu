@@ -9,7 +9,7 @@ class Post
   property :slug, String, :length => 255, :required => true, :index => true, :unique => true
   property :body, Text, :required => true
   property :body_html, Text, :required => true
-  property :approved_comments_count, Integer, :default => 0, :required => true
+  property :comments_count, Integer, :default => 0, :required => true
   property :published_at, DateTime
   property :edited_at, DateTime, :required => true
   property :created_at, DateTime
@@ -53,9 +53,9 @@ class Post
     self.published_at = Chronic.parse(chronic_str) || Time.now
   end
 
-  def denormalize_comments_count!
-    self.approved_comments_count = comments.count
-    save
+  def set_comments_count!
+    self.comments_count = comments.count
+    save!
   end
 
   def set_data!
