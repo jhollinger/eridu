@@ -1,5 +1,3 @@
-require 'cgi'
-
 # Common code for Posts, Pages and Comments
 module HTMLBody
   def to_s
@@ -13,7 +11,7 @@ module HTMLBody
 
   # Caches the Textile-parsed body
   def set_html!
-    self.body_html = RedCloth.new(CGI::unescapeHTML(self.body.to_s)).to_html
+    self.body_html = RedCloth.new(self.body.to_s).to_html
   end
 end
 
