@@ -14,16 +14,18 @@
   </head>
 
   <body>
-    <ul id="nav" class="shiny">
-    <% if signed_in? %>
-    <% nav.each do |title, path, selected| %>
-      <li><a href="<%= path %>"<%= ' class="selected"' if selected %>><%= title %></a></li>
-    <% end %>
-      <li>&nbsp;</li>
-      <li><a href="/admin/logout">Logout</a></li>
-    <% end %>
-      <li><a href="/">View Site</a></li>
-    </ul>
+    <header>
+      <ul id="nav" class="shiny">
+      <% if signed_in? %>
+      <% nav.each do |title, path, selected| %>
+        <li><a href="<%= path %>"<%= ' class="selected"' if selected %>><%= title %></a></li>
+      <% end %>
+        <li>&nbsp;</li>
+        <li><a href="/admin/logout">Logout</a></li>
+      <% end %>
+        <li><a href="/">View Site</a></li>
+      </ul>
+    </header>
 
     <div id="main">
 <%= yield %>

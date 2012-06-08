@@ -39,7 +39,7 @@ class Eridu < AbstractHandler
     @tag = tag
     @posts = @tag == 'posts' ? Post.recent : Post.recent.tagged_with(@tag)
     title @tag.capitalize
-    atom ? builder(:"posts/feed") : erb(:"posts/index")
+    atom ? builder(:"posts/feed") : erb(:"posts/tagged")
   end
 end
 

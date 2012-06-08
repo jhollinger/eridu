@@ -5,11 +5,11 @@
   <h3>Comments</h3>
 
   <% @post.comments.all(:order => :created_at).each do |comment| %>
-  <div class="box">
+  <div class="comment">
     <a name="comment-<%= comment.id %>"></a>
     <p>
       <strong><%= h comment.author %></strong> says:<br/>
-      <small class="light"><%= comment.created_at.strftime(dtfmt) %></small>
+      <small class="meta"><%= comment.created_at.strftime(dtfmt) %></small>
     </p>
     <%= comment.body_html %>
   </div>

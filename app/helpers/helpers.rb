@@ -23,7 +23,7 @@ module Helpers
 
   # Returns and caches an array of links for the header
   def header_links
-    @header_links ||= [['homepage', '/'], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *Conf[:links]]
+    @header_links ||= [['home', '/'], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *Conf[:links]]
   end
 
   # Whether or not to show the reCAPTCHA form

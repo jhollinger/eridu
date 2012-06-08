@@ -1,4 +1,26 @@
-body { background-color: #ddd }
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #ddd;
+}
+
+body, textarea {
+  font-family: Helvetica, Sans-serif;
+  font-size: 10pt;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+}
+
+h1 { margin: 10px 0px }
+h1, h2, h3 {
+  color: #333;
+  margin-bottom: 5px;
+  text-shadow: 0px 0px 3px #aaa;
+}
 
 a, a:visited {
   text-decoration: none;
@@ -6,9 +28,10 @@ a, a:visited {
   color: #555;
 }
 
-#main { padding: 0px 10px 10px 10px }
-h1 { margin: 10px 0px }
-h1, h2, h3 { color: #333; text-shadow: 0px 0px 3px #aaa }
+#main {
+  margin-top: 45px;
+  padding: 0px 10px 10px 10px;
+}
 
 .shiny {
   background-color: rgb(35,35,35);
@@ -20,6 +43,8 @@ h1, h2, h3 { color: #333; text-shadow: 0px 0px 3px #aaa }
   color: #eee;
   font-weight: bold;
 }
+
+.light { color: #777 }
 
 #nav {
   margin: 0px;
