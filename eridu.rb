@@ -14,9 +14,9 @@ class Eridu < AbstractHandler
   use AdminCommentsHandler
   use AdminTrashHandler
 
-  # Front page
+  # Home page
   get '/' do
-    @posts, @pages = Post.recent, Page.ordered
+    @posts = Post.recent
     erb :"posts/index"
   end
 
