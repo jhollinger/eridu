@@ -62,12 +62,12 @@ header, footer, section, article { display: block }
   margin: 0 auto 50px auto;
   width: 800px;
 }
+#main h2, #main h3, #main h4 { color: #2c2c2c }
 
 #main a { color: #e78305; font-weight: bold }
 
 article a:hover { text-decoration: underline }
 article header h2 a:hover { text-decoration: none }
-article .content h3, article .content h4 { color: #2c2c2c }
 
 article p { margin: 24px 0 }
 article .content p:first-child, article .content h3 + p, article .content h4 + p { margin-top: 10px }

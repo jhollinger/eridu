@@ -19,7 +19,6 @@ h1 { margin: 10px 0px }
 h1, h2, h3 {
   color: #333;
   margin-bottom: 5px;
-  text-shadow: 0px 0px 3px #aaa;
 }
 
 a, a:visited {
@@ -32,12 +31,13 @@ a, a:visited {
   margin-top: 45px;
   padding: 0px 10px 10px 10px;
 }
+#main h1, #main h2, #main h3 { text-shadow: 1px 1px 1px #fff }
 
 .shiny {
   background-color: rgb(35,35,35);
   background: -moz-linear-gradient(-90deg, rgb(50,50,50), rgb(20,20,20));
   background: -webkit-gradient(linear, center top, center bottom, from(rgb(40,40,40)), to(rgb(30,30,30)));
-  box-shadow: 0 0 5px #555;
+  box-shadow: 0 0 5px #777;
 }
 .shiny, .shiny a, .shiny a:visited {
   color: #eee;

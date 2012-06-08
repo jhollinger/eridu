@@ -12,7 +12,7 @@
   <body>
     <header id="dox">
       <h1><a href="/"><%= Conf[:title] %></a></h1>
-      <p><%= Conf[:tagline] %></p>
+      <span class="meta"><%= Conf[:tagline] %></span>
 
       <div id="links" class="large">
       <% header_links.each do |title, url| %>
@@ -33,7 +33,7 @@
       </div>
 
       <div class="large sink">
-        <a href="http://github.com/jhollinger/eridu">powered by eridu</a>
+        <a class="meta" href="http://github.com/jhollinger/eridu">powered by eridu</a>
       </div>
     </header>
 
