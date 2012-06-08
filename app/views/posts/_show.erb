@@ -9,6 +9,7 @@
   </header>
 
   <section class="content">
-    <%= post.body_html %>
+    <% content_method = (defined?(teaser) and teaser and post.teaser?) ? :teaser_html : :body_html %>
+    <%= post.send(content_method) %>
   </section>
 </article>

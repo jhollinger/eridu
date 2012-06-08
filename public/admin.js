@@ -16,14 +16,14 @@ $(function() {
   })
 })
 
-function bind_textile_preview(button, textarea) {
+function bind_textile_preview(button) {
   $(button).click(function() {
     var overlay = $('#overlay')
     var preview_pane = overlay.find('.contentWrap')
     overlay.overlay({mask: {color: '#000', opacity: 0.4}})
     overlay.data('overlay').load()
     preview_pane.html('<h2>Loading...</h2>')
-    fetch_textile_preview(textarea, preview_pane)
+    fetch_textile_preview($($(this).attr('data-preview-src')), preview_pane)
   })
 }
 

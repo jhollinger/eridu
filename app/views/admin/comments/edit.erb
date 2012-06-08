@@ -21,7 +21,7 @@
   <p>
     <label for="comment_body">Body</label><br />
     <textarea id="comment_body" name="comment[body]" cols="90" rows="20"><%= @comment.body %></textarea><br />
-    <span class="light"><a href="http://textile.thresholdstate.com/">Textile enabled</a>. <input type="button" id="show_preview" value="Preview" /></span>
+    <span class="light"><a href="http://textile.thresholdstate.com/">Textile enabled</a>. <input type="button" id="show_preview" data-preview-src="#comment_body" value="Preview" /></span>
   </p>
 
   <p><input type="submit" value="Save Comment" /> or <a href="/admin/comments">cancel</a></p>
@@ -29,6 +29,6 @@
 
 <script type="text/javascript">
   $(function() {
-    bind_textile_preview('#show_preview', '#comment_body')
+    bind_textile_preview('#show_preview')
   })
 </script>

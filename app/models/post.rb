@@ -7,6 +7,8 @@ class Post
   property :id, Serial
   property :title, String, :length => 255, :required => true
   property :slug, String, :length => 255, :required => true, :index => true, :unique => true
+  property :teaser, Text
+  property :teaser_html, Text
   property :body, Text, :required => true
   property :body_html, Text, :required => true
   property :comments_count, Integer, :default => 0, :required => true
@@ -28,6 +30,7 @@ class Post
     Post.published.ordered.all(options)
   end
 
+  # Finds a post by its date and slug. Raises Sinatra::NotFound if it can't be found
   def self.find_by_permalink(year, month, day, slug, options = {})
     begin
       date = Date.parse("#{year}-#{month}-#{day}")
@@ -43,18 +46,33 @@ class Post
     all(:published_at.lt => Time.now)
   end
 
+  # Returns Posts ordered by published date
   def self.ordered
     all(:order => :published_at.desc)
   end
 
+  # Returns this posts permalink
+  def permalink
+    date = self.published_at
+    "/#{date.year}/#{date.strftime('%m')}/#{date.strftime('%d')}/#{self.slug}"
+  end
+
+  # Returns true if this Post has a teaser
+  def teaser?
+    !self.teaser.nil?
+  end
+
+  # Returns true of this Post has been published
   def published?
     published_at?
   end
 
+  # Returns true if the current edit was minor
   def minor_edit?
     minor_edit == '1'
   end
 
+  # Set the published date using a Chronic string, like "now"
   def published_at_natural=(chronic_str)
     self.published_at = Chronic.parse(chronic_str) || Time.now
   end
@@ -67,6 +85,17 @@ class Post
   def set_data!
     super
     set_dates!
+  end
+
+  # Override to cache the teaser html
+  def set_html!
+    super
+    self.teaser_html = if self.teaser?
+      textile = self.teaser + %Q|<p><a href="#{self.permalink}">read more &rarr;</a></p>|
+       RedCloth.new(textile).to_html
+    else
+      nil
+    end
   end
 
   private

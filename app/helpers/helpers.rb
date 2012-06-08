@@ -7,8 +7,7 @@ module Helpers
 
   # Public path to a post
   def permalink_path(post)
-    date = post.published_at
-    "/#{date.year}/#{date.strftime('%m')}/#{date.strftime('%d')}/#{post.slug}"
+    post.permalink
   end
 
   # Public path to a comment
