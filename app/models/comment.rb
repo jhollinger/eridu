@@ -7,7 +7,6 @@ class Comment
   property :author, String, :required => true
   property :author_url, String
   property :author_email, String
-  property :author_openid_authority, String
   property :body, Text, :required => true
   property :body_html, Text, :required => true
   property :created_at, DateTime
