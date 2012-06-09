@@ -4,7 +4,7 @@
     <span class="meta">
       <%= post.published_at.strftime('%B %e, %Y') %>
       | <%= post.tag_list.map { |tag| link_to tag, "/#{tag}" }.join(', ') %> <%= '|' unless post.tag_list.empty? %>
-      <%= post.comments.count %> comments
+      <%= num = post.comments.count; num %> comment<%= 's' if num != 1 %>
     </span>
   </header>
 
