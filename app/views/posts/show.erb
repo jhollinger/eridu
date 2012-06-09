@@ -1,5 +1,6 @@
 <%= erb :"posts/_show", :locals => {:post => @post} %>
 
+<a name="comments"></a>
 <% if @post.comments.count > 0 %>
   <% dtfmt = '%B %e, %Y at %I:%M %P' %>
   <h3>Comments</h3>

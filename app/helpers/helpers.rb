@@ -6,13 +6,13 @@ module Helpers
   end
 
   # Public path to a post
-  def permalink_path(post)
-    post.permalink
+  def permalink_path(post, hash=nil)
+    "#{post.permalink}#{hash}"
   end
 
   # Public path to a comment
   def permalink_comment_path(comment)
-    "#{permalink_path(comment.post)}#comment-#{comment.id}"
+    permalink_path(comment.post, "#comment-#{comment.id}")
   end
 
   # Public path to a page
@@ -44,9 +44,8 @@ module Helpers
     return false if Eridu.development?
     # Get or render the content
     body_text = text_or_template.is_a?(Symbol) ? erb(:"mailers/#{text_or_template}.text", :layout => false) : text_or_template
-    body_html = text_or_template.is_a?(Symbol) \
-      ? File.exists?(ROOT['app', 'views', 'mailers', "#{text_or_template}.html.erb"]) ? erb(:"mailers/#{text_or_template}.html", :layout => false) : nil \
-      : nil
+    body_html = text_or_template.is_a?(Symbol) && File.exists?(ROOT['app', 'views', 'mailers', "#{text_or_template}.html.erb"]) \
+      ? erb(:"mailers/#{text_or_template}.html", :layout => false) : nil
     # Send the mail
     Mail.deliver do
       from Conf[:mail, :from]
