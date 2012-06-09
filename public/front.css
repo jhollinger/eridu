@@ -4,6 +4,7 @@ body {
   line-height: 22px;
   padding: 15px;
   font-weight: 300;
+  color: #2c2c2c;
 }
 
 h1 { font-size: 20px }
@@ -62,9 +63,10 @@ header, footer, section, article { display: block }
   margin: 0 auto 50px auto;
   width: 800px;
 }
-#main h2, #main h3, #main h4, strong { color: #2c2c2c }
 
 #main a { color: #e78305; font-weight: bold }
+
+#main > *:first-child { margin-top: 0px }
 
 article a:hover { text-decoration: underline }
 article header h2 a:hover { text-decoration: none }
