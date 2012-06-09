@@ -16,8 +16,12 @@ class Eridu < AbstractHandler
 
   # Home page
   get '/' do
-    @posts = Post.recent
-    erb :"posts/index"
+    if @page = Page.home
+      erb :"pages/show"
+    else
+      @posts = Post.recent
+      erb :"posts/index"
+    end
   end
 
   # A post

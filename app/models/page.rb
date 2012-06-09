@@ -1,4 +1,5 @@
 class Page
+  HOME_SLUG = 'home'
   include Content
   include DataMapper::Resource
 
@@ -12,6 +13,11 @@ class Page
   property :deleted_at, ParanoidDateTime, :index => true
 
   before :valid?, :set_data!
+
+  # Return the home page, or nil if none
+  def self.home
+    Page.first(:slug => HOME_SLUG)
+  end
 
   def self.find_by_slug(slug)
     first(:slug => slug) || raise(Sinatra::NotFound)

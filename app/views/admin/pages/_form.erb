@@ -15,7 +15,8 @@
   <p>
     <label for="page_slug">Slug</label><br />
     <input id="page_slug" maxlength="255" size="50" name="page[slug]" type="text" value="<%= @page.slug %>"><br />
-    <small class="light">Leave blank for an auto-generated slug based on the title</small>
+    <small class="light">Leave blank for an auto-generated slug based on the title</small><br />
+    <small class="light">You may make this your home page by using <em>home</em> as the slug</small>
   </p>
 
   <p><input type="submit" value="Save Page" /> or <a href="/admin/pages">cancel</a></p>
