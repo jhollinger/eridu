@@ -5,8 +5,8 @@ class Comment
   property :id, Serial
   property :post_id, Integer, :required => true, :index => true
   property :author, String, :required => true
-  property :author_url, String
-  property :author_email, String
+  property :author_email, String, :format => :email_address
+  property :author_url, String, :format => :url
   property :body, Text, :required => true
   property :body_html, Text, :required => true
   property :created_at, DateTime
