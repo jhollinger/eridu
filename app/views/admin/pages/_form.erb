@@ -9,7 +9,7 @@
   <p>
     <label for="page_body">Body</label><br />
     <textarea id="page_body" name="page[body]" cols="90" rows="20"><%= @page.body %></textarea><br />
-    <span class="light"><a href="http://textile.thresholdstate.com/">Textile enabled</a>. <input type="button" id="show_preview" value="Preview" /></span>
+    <span class="light"><a href="http://textile.thresholdstate.com/">Textile enabled</a>. <input type="button" id="show_preview" data-preview-src="#page_body" value="Preview" /></span>
   </p>
 
   <p>
@@ -23,6 +23,6 @@
 
 <script type="text/javascript">
   $(function() {
-    bind_textile_preview('#show_preview', '#page_body')
+    bind_textile_preview('#show_preview')
   })
 </script>

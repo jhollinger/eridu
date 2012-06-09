@@ -41,16 +41,6 @@ function fetch_textile_preview(textarea, preview_pane) {
   )
 }
 
-// Returns a random string of alphanumeric chars. Optionally pass a length, default is 5.
-function rand_str() {
-  var length = arguments[0] || 5
-  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  var str = ''
-  for ( var i=0; i < length; i++ )
-    str += possible.charAt(Math.floor(Math.random() * possible.length))
-  return str
-}
-
 // Execute "this" function only every n milliseconds, regardless how frequently it's called
 Function.prototype.only_every = function (millisecond_delay, id) {
   var name = 'only_every_' + id

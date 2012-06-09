@@ -45,6 +45,7 @@ a, a:visited {
 }
 
 .light { color: #777 }
+.hidden { display: none }
 
 #nav {
   margin: 0px;

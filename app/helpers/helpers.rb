@@ -7,8 +7,7 @@ module Helpers
 
   # Public path to a post
   def permalink_path(post)
-    date = post.published_at
-    "/#{date.year}/#{date.strftime('%m')}/#{date.strftime('%d')}/#{post.slug}"
+    post.permalink
   end
 
   # Public path to a comment
@@ -23,7 +22,7 @@ module Helpers
 
   # Returns and caches an array of links for the header
   def header_links
-    @header_links ||= [['home', '/'], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *Conf[:links]]
+    @header_links ||= [%w[home /], %w[archives /archives], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *Conf[:links]]
   end
 
   # Whether or not to show the reCAPTCHA form

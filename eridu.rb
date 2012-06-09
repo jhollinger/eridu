@@ -34,6 +34,13 @@ class Eridu < AbstractHandler
     erb :"pages/show"
   end
 
+  # All posts grouped by month and year
+  get '/archives/?' do
+    @posts = Post.published.ordered.group_by { |post| post.published_at.strftime('%B %Y') }
+    title 'Archives'
+    erb :"posts/archives"
+  end
+
   # Tagged posts and Atom feed
   get %r{^/(\w+)(\.atom)?/?$} do |tag, atom|
     @tag = tag
