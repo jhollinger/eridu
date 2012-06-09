@@ -31,7 +31,7 @@ class AdminHandler < AbstractHandler
       true
     else
       if resp = request.env[Rack::OpenID::RESPONSE]
-        resp.status == :success
+        resp.status == :success && Conf[:author, :open_id].include?(resp.identity_url)
       else
         headers 'WWW-Authenticate' => Rack::OpenID.build_header(:identifier => params['openid_identifier'])
         throw :halt, [401, 'got openid?']
