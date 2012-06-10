@@ -14,7 +14,7 @@
   <% @comments.each do |comment| %>
     <tr>
       <td><%= comment.created_at.strftime(date) %></td>
-      <td><%= comment.author %></td>
+      <td><%= comment.author_url ? tag('a', h(comment.author), :href => comment.author_url) : h(comment.author) %></td>
       <td><%= link_to h(comment.blurb), admin_comment_path(comment) %></td>
       <td><%= link_to comment.post.title, admin_post_path(comment.post) %></td>
       <td>
