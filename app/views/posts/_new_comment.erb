@@ -4,7 +4,7 @@
     <%= errors_for @comment if @comment %>
     <p>
       <input id="comment_author" name="comment[author]" size="30" type="text" value="<%= @comment.try(:author) %>">
-    <label for="comment_author"><small>Name or <a href="http://openidexplained.com/">OpenID</a> (required)</small></label>
+    <label for="comment_author"><small>Name</small></label>
     </p>
     <p>
       <input id="comment_author_email" name="comment[author_email]" size="30" type="text" value="<%= @comment.try(:author_email) %>">
