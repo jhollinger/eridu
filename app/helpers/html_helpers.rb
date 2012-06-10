@@ -12,7 +12,7 @@ module HTMLHelpers
     options[:"data-confirm"] = options.delete(:confirm) if options.has_key? :confirm
     options[:"data-method"] = options.delete(:method) if options.has_key? :method
     options[:href] = path
-    tag('a', options, text)
+    tag('a', text, options)
   end
 
   # Returns an img tag with the src as the specified icon
@@ -26,11 +26,11 @@ module HTMLHelpers
   # Returns an img tag with the src as the specified img
   def image_tag(image, options={})
     options[:src] = "/images/#{image}"
-    tag('img', options)
+    tag('img', nil, options)
   end
 
-  # A generic HTML tag generator. If falsey content is passed, a self-closing tag is generated
-  def tag(tag_name, options, content=nil)
+  # A generic HTML tag generator. If nil content is passed, a self-closing tag is generated
+  def tag(tag_name, content, options={})
     attrs = options.map { |attr,val| %Q|#{attr}="#{val.to_s.gsub(/"/, '\"')}"| }
     open_tag = "<#{tag_name} #{attrs.join(' ')}"
     content ? "#{open_tag}>#{content}</#{tag_name}>" : "#{open_tag} />"
