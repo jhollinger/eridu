@@ -4,9 +4,9 @@ class Comment
 
   property :id, Serial
   property :post_id, Integer, :required => true, :index => true
-  property :author, String, :required => true
-  property :author_email, String, :format => :email_address
-  property :author_url, String, :format => :url
+  property :author, String, :length => 100, :required => true
+  property :author_email, String, :length => 100, :format => :email_address
+  property :author_url, String, :length => 100, :format => :url
   property :body, Text, :required => true
   property :body_html, Text, :required => true
   property :created_at, DateTime
@@ -30,9 +30,6 @@ class Comment
 
   def set_data!
     set_html!
-    # Hack around Enki schema
-    self.author_url ||= ''
-    self.author_email ||= ''
   end
 
   # Override HTMLBody::set_html! so we can filter or sanitize public comments

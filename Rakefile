@@ -22,6 +22,7 @@ namespace :db do
       end
 
       # Convert schema
+      puts 'Beginning conversion from Enki...'
       DataMapper.auto_upgrade!
 
       # Convert existing tagging data
@@ -42,6 +43,11 @@ namespace :db do
           end
         end
       end
+      puts "Finished conversion from Enki!"
+      puts ''
+      puts "IMPORTANT NOTE: Enki created comments.author_email and comments.author_url as non-null."
+      puts "However, Eridu allows them to be null. BEFORE COMMENTS WILL WORK, you must manually "
+      puts "alter the comments table in your database to allow author_email and author_url to be null."
     end
   end
 end
