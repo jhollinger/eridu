@@ -20,7 +20,7 @@ end if Conf[:mail]
 DataMapper::Logger.new($stdout, :debug) if APP_ENV == :development
 DataMapper.setup(:default, Conf[:database])
 # Load models
-Dir.glob(ROOT['app', 'models', '*.rb']).sort.each { |model| require model }
+Dir.glob(ROOT['app', 'models', '**', '*.rb']).sort.each { |model| require model }
 DataMapper.finalize
 
 # Load helpers and handlers
