@@ -2,7 +2,7 @@
 class AuthToken
   RAND_SEEDS = [(0..9), ('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
 
-  attr_reader :salt, :date
+  attr_reader :salt
 
   def initialize(salt=nil)
     @salt = salt || self.class.rand_str(rand(32) + 8)
