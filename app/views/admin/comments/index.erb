@@ -14,12 +14,12 @@
   <% @comments.each do |comment| %>
     <tr>
       <td><%= comment.created_at.strftime(date) %></td>
-      <td><%= comment.author_url ? tag('a', h(comment.author), :href => comment.author_url) : h(comment.author) %></td>
+      <td><%= comment.author_url ? link_to(h(comment.author), comment.author_url) : h(comment.author) %></td>
       <td><%= link_to h(comment.blurb), admin_comment_path(comment) %></td>
       <td><%= link_to comment.post.title, admin_post_path(comment.post) %></td>
       <td>
         <%= link_to icon_tag(:edit), admin_comment_path(comment) %>
-        <%= link_to icon_tag(:delete), admin_comment_path(comment), :method => :delete, :confirm => "Are you sure you want to delete the comment from #{comment.author}" %>
+        <%= link_to icon_tag(:delete), admin_comment_path(comment), :method => :delete, :confirm => "Are you sure you want to delete the comment from #{h(comment.author)}" %>
       </td>
     </tr>
   <% end %>

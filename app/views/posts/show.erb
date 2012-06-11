@@ -9,7 +9,7 @@
   <div class="comment">
     <a name="comment-<%= comment.id %>"></a>
     <p>
-      <strong><%= comment.author_url ? tag('a', h(comment.author), :href => comment.author_url) : h(comment.author) %></strong><br/>
+      <strong><%= comment.author_url ? link_to(h(comment.author), comment.author_url) : h(comment.author) %></strong><br/>
       <small class="meta"><%= comment.created_at.strftime(dtfmt) %></small>
     </p>
     <%= comment.body_html %>

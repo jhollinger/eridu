@@ -26,8 +26,4 @@ class Page
   def self.ordered
     all(:order => :title)
   end
-
-  def active?
-    true
-  end
 end

@@ -87,6 +87,12 @@ class Post
     set_dates!
   end
 
+  private
+
+  def set_dates!
+    self.edited_at = Time.now if edited_at.nil? || !minor_edit?
+  end
+
   # Override to cache the teaser html
   def set_html!
     super
@@ -96,12 +102,6 @@ class Post
     else
       nil
     end
-  end
-
-  private
-
-  def set_dates!
-    self.edited_at = Time.now if edited_at.nil? || !minor_edit?
   end
 
   def destroy_comments

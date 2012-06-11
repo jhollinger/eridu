@@ -9,6 +9,8 @@ module HTMLBody
     body[0, 50] << '...'
   end
 
+  private
+
   # Caches the Textile-parsed body
   def set_html!
     self.body_html = RedCloth.new(self.body.to_s).to_html

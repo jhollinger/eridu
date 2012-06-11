@@ -32,14 +32,16 @@ class Comment
     set_html!
   end
 
+  private
+
+  def denormalize
+    self.post.set_comments_count!
+  end
+
   # Override HTMLBody::set_html! so we can filter or sanitize public comments
   def set_html!
     cloth = RedCloth.new(CGI::unescapeHTML(self.body.to_s))
     cloth.filter_html = true # Escape any HTML tags weren't generated from Textile
     self.body_html = cloth.to_html
-  end
-
-  def denormalize
-    self.post.set_comments_count!
   end
 end
