@@ -45,7 +45,7 @@ class Eridu < AbstractHandler
     erb :"posts/archives"
   end
 
-  # Tagged posts and Atom feed
+  # Recently tagged posts and Atom feed
   get %r{^/(\w+)(\.atom)?/?$} do |tag, atom|
     @tag = tag
     @posts = @tag == 'posts' ? Post.recent : Post.recent.tagged_with(@tag)

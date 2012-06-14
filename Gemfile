@@ -22,5 +22,6 @@ gem 'builder'
 
 group :test do
   gem 'rspec'
-  #gem 'database_cleaner', '>=0.7.1'
+  gem 'capybara'
+  gem 'database_cleaner'
 end

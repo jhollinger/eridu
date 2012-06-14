@@ -5,7 +5,7 @@
   <p><input type="text" name="openid_identifier" autofocus="autofocus" /></p>
   <p>
     <input type="submit" value="Login with OpenID" />
-  <% if Eridu.development? %>
+  <% if !Eridu.production? %>
     <input type="checkbox" name="bypass" id="bypass" value="1" checked="checked" /><label for="bypass">Bypass credentials</label>
   <% end %>
   </p>

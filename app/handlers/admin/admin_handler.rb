@@ -27,7 +27,7 @@ class AdminHandler < AbstractHandler
 
   # Login
   post '/admin/login/?' do
-    success = if Eridu.development? and params[:bypass]
+    success = if !Eridu.production? && params[:bypass]
       true
     else
       if resp = request.env[Rack::OpenID::RESPONSE]
