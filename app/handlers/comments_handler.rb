@@ -1,6 +1,6 @@
 class CommentsHandler < AbstractHandler
   # Post a comment
-  post %r{^/([0-9]{4})/([0-9]{2})/([0-9]{2})/(.+)/?$} do |year, month, day, slug|
+  post %r{^/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/?$} do |year, month, day, slug|
     @post = Post.find_by_permalink(year, month, day, slug)
     @comment = @post.comments.new(params[:comment])
     continue = Conf[:recaptcha] ? (session[:sentience_verified] ||= recaptcha_valid?) : true
