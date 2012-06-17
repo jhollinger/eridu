@@ -8,9 +8,7 @@ body {
 }
 
 h1 { font-size: 20px }
-h1, h2, h3, h4 {
-  margin: 0;
-}
+h1, h2, h3, h4 { margin: 0 }
 
 a { text-decoration: none }
 
@@ -47,9 +45,7 @@ header, footer, section, article { display: block }
   min-height: 400px;
 }
 
-#dox a {
-  color: #222;
-}
+#dox a { color: #222 }
 #dox a:hover { border-bottom: 1px dotted #444 }
 
 #links {
@@ -75,13 +71,11 @@ article p { margin: 24px 0 }
 article .content p:first-child, article .content h3 + p, article .content h4 + p { margin-top: 10px }
 article .content p:last-child { margin-bottom: 0 }
 
-.post {
+.post, .comment {
   margin-bottom: 30px;
 }
-.post:last-child { margin-bottom: 10px }
 
-.comment {
-  margin-bottom: 20px;
+.post.teaser, .comment {
   padding-left: 15px;
   border-left: 3px solid #e78305;
 }
@@ -89,14 +83,14 @@ article .content p:last-child { margin-bottom: 0 }
 #new_comment label { margin-left: 1em }
 #new_comment textarea { height: 120px; width: 400px }
 
-.sink {
-  position: absolute;
-  bottom: 30px;
-}
-
 .meta {
   font-size: 80%;
   color: #8c8c8c;
+}
+
+.sink {
+  position: absolute;
+  bottom: 30px;
 }
 
 .hidden, .small { display: none; }

@@ -1,15 +1,15 @@
-<article class="post">
-  <header>
-    <h2><%= link_to post.title, permalink_path(post) %></h2>
-    <span class="meta">
-      <%= post.published_at.strftime('%B %e, %Y') %> |
-      <%= post.tag_list.map { |tag| link_to tag, "/#{tag}" }.join(', ') %> <%= '|' unless post.tag_list.empty? %>
-      <%= num = post.comments.count; link_to "#{num} comment#{'s' unless num == 1}", permalink_path(post, '#comments') %>
-    </span>
-  </header>
+  <article class="post<%= ' teaser' if defined?(teaser) and teaser %>">
+    <header>
+      <h2><%= link_to post.title, permalink_path(post) %></h2>
+      <span class="meta">
+        <%= post.published_at.strftime('%B %e, %Y') %> |
+        <%= post.tag_list.map { |tag| link_to tag, "/#{tag}" }.join(', ') %> <%= '|' unless post.tag_list.empty? %>
+        <%= num = post.comments.count; link_to "#{num} comment#{'s' unless num == 1}", permalink_path(post, '#comments') %>
+      </span>
+    </header>
 
-  <section class="content">
-    <% content_method = (defined?(teaser) and teaser and post.teaser?) ? :teaser_html : :body_html %>
-    <%= post.send(content_method) %>
-  </section>
-</article>
+    <section class="content">
+      <% content_method = (defined?(teaser) and teaser and post.teaser?) ? :teaser_html : :body_html %>
+      <%= post.send(content_method) %>
+    </section>
+  </article>
