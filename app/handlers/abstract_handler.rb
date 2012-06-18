@@ -17,10 +17,6 @@ class AbstractHandler < Sinatra::Base
     params.nilify! unless request.get?
   end
 
-  before '/admin/*' do
-    redirect '/admin' unless signed_in? or request.path == '/admin/login'
-  end
-
   configure :production, :development do
     enable :logging
   end

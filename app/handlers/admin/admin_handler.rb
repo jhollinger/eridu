@@ -3,6 +3,11 @@ class AdminHandler < AbstractHandler
     include AdminHelper
   end
 
+  # Restrict access to /admin
+  before '/admin/*' do
+    redirect '/admin' unless signed_in? or request.path == '/admin/login'
+  end
+
   # Dashboard (or login form)
   get '/admin/?' do
     if signed_in?
