@@ -62,11 +62,6 @@ class Post
     !self.teaser.nil?
   end
 
-  # Returns true of this Post has been published
-  def published?
-    published_at?
-  end
-
   # Returns true if the current edit was minor
   def minor_edit?
     minor_edit == '1'
