@@ -6,7 +6,7 @@ class CommentsHandler < AbstractHandler
     continue = Conf[:recaptcha] ? (session[:sentience_verified] ||= recaptcha_valid?) : true
 
     if continue and @comment.save
-      mail Conf[:author, :email], 'New comment notification', :comment if Conf[:mail, :comments]
+      mail Conf[:author, :email], "New comment on #{@post.title}", :comment if Conf[:mail, :comments]
       redirect permalink_comment_path(@comment)
     else
       erb :"posts/show"

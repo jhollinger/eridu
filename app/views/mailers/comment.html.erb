@@ -1,2 +1,1 @@
-<% path = "#{Conf[:url]}#{permalink_comment_path(@comment)}" %>
-<a href="<%= path %>"><%= path %></a>
+<a href="<%= "#{Conf[:url]}#{permalink_comment_path(@comment)}"  %>">Read <%= @comment.author %>'s comment</a>
