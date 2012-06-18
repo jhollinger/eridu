@@ -1,4 +1,4 @@
-# Generates a salted token that should be valid for 24 hours. I wouldn't use it for anything important.
+# Generates a salted token that should be valid for 24 hours
 class AuthToken
   RAND_SEEDS = [(0..9), ('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
 

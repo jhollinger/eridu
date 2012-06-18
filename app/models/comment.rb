@@ -19,21 +19,25 @@ class Comment
   after :save, :denormalize
   after :destroy, :denormalize
 
+  # Returns the 20 most recent comments in descending order
   def self.recent(options = {})
     options = {:created_at.lt => Time.now, :limit => 20}.merge(options)
     Comment.ordered.all(options)
   end
 
+  # Returns comments in descending order
   def self.ordered
     all(:order => :created_at.desc)
   end
 
+  private
+
+  # Cache the html
   def set_data!
     set_html!
   end
 
-  private
-
+  # Reset the post's comment count
   def denormalize
     self.post.set_comments_count!
   end

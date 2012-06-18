@@ -19,10 +19,12 @@ class Page
     Page.first(:slug => HOME_SLUG)
   end
 
+  # Finds a page by its slug. Raises Sinatra::NotFound if it can't be found
   def self.find_by_slug(slug)
     first(:slug => slug) || raise(Sinatra::NotFound)
   end
 
+  # Returns pages ordered by title
   def self.ordered
     all(:order => :title)
   end

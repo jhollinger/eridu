@@ -23,12 +23,12 @@ module Content
     base.send :include, HTMLBody
   end
 
+  private
+
   def set_data!
     set_slug!
     set_html!
   end
-
-  private
 
   # Converts and assigns a title like "The Title" into a slug like "the-title"
   def set_slug!

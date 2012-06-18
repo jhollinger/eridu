@@ -1,15 +1,15 @@
 # Configuration options for your blog - customise to taste
 title: My Eridu Blog
 tagline: My tagline is better
-url: http://eridublog.com
+domain: eridublog.com
 
 # About the author
 author:
   name: Jim Jimmers               # For copyright notice and ATOM feeds
-  email: jim.jimmers@enkiblog.com # Exception and comment notification emails will go here, and it is used in ATOM feeds
+  email: jim.jimmers@eridublog.com # Exception and comment notification emails will go here, and it is used in ATOM feeds
   open_id:                        # These are used to login to the admin area
-      - http://foo.myopenid.com
-      - http://secondaryopenid.com
+    - http://foo.myopenid.com
+    - http://secondaryopenid.com
 
 # Links you want to share (optional)
 links:

@@ -1,15 +1,18 @@
-# Mail settings. Deleting mail.yml will disable all mail.
+# To enable mail, create config/mail.yml using this file as a template.
+
+# Notification configuration
+
 errors: true # Notify me of exceptions
 comments: true # Notify me of new comments
 
 # Mail delivery configuration. See https://github.com/mikel/mail for more info.
-# Examples:
-# 
-# Sendmail:
-# method: sendmail
-# from: root <root@localhost>
-# settings:
-#   location: /usr/sbin/sendmail
+
+method: sendmail
+from: root <root@localhost>
+settings:
+  location: /usr/sbin/sendmail
+
+# More examples:
 # 
 # Exim4:
 # method: sendmail

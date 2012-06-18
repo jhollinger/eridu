@@ -26,3 +26,13 @@ module Enumerable
     end
   end
 end
+
+class Hash
+  # Return a new Hash wil all keys symbolized
+  def symbolize_keys
+    self.inject({}) do |options, (key, value)|
+      options[(key.respond_to?(:to_sym) ? key.to_sym : key)] = value.is_a?(Hash) ? value.symbolize_keys : value
+      options
+    end
+  end
+end

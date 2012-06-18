@@ -82,12 +82,12 @@ class Post
     save!
   end
 
+  private
+
   def set_data!
     super
     set_dates!
   end
-
-  private
 
   def set_dates!
     self.edited_at = Time.now if edited_at.nil? || !minor_edit?
