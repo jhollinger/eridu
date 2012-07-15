@@ -1,4 +1,7 @@
 module HTMLHelpers
+  # A cache of mtimes for assets
+  ASSET_TIMESTAMPS = {}
+
   # Displays a list of errors on a record
   def errors_for(obj)
     if obj.errors.any?
@@ -31,8 +34,23 @@ module HTMLHelpers
 
   # A generic HTML tag generator. If nil content is passed, a self-closing tag is generated
   def tag(tag_name, content, options={})
+    invalidate_asset_cache! options
     attrs = options.map { |attr,val| %Q|#{attr}="#{val.to_s.gsub(/"/, '\"')}"| }
     open_tag = "<#{tag_name} #{attrs.join(' ')}"
-    content ? "#{open_tag}>#{content}</#{tag_name}>" : "#{open_tag} />"
+    content.nil? ? "#{open_tag} />" : "#{open_tag}>#{content}</#{tag_name}>"
+  end
+
+  # Append a Unix timestamp to the specified path
+  def invalidate_asset_cache!(options)
+    if attr = options.delete(:invalidate)
+      if stamp = asset_timestamp(ROOT['public', options[attr]])
+        options[attr] += options[attr].include?('?') ? "&#{stamp}" : "?#{stamp}"
+      end
+    end
+  end
+
+  # Retrieve or set a cache of mtimes for assets
+  def asset_timestamp(path)
+    ASSET_TIMESTAMPS[path] ||= File.new(path).mtime.to_i.to_s rescue nil
   end
 end

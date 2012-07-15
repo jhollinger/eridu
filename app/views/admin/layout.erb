@@ -5,11 +5,10 @@
     <meta name="viewport" content="initial-scale=1.0" />
     <title>Admin / <%= Conf[:title] %></title>
 
-    <link href="/base.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="/admin.css" media="screen" rel="stylesheet" type="text/css">
+    <%= tag 'link', nil, :href => '/admin.css', :media => 'screen', :rel => 'stylesheet', :type => 'text/css', :invalidate => :href %>
 
-    <script src="/lib.js" type="text/javascript"></script> 
-    <script src="/admin.js" type="text/javascript"></script> 
+    <%= tag 'script', '', :src => '/lib.js', :type => 'text/javascript', :invalidate => :src %>
+    <%= tag 'script', '', :src => '/admin.js', :type => 'text/javascript', :invalidate => :src %>
   </head>
 
   <body>

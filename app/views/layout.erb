@@ -5,8 +5,8 @@
     <meta name="viewport" content="initial-scale=1.0" />
     <title><%= title + ' / ' if title %><%= Conf[:title] %></title>
     <link href="/posts.atom" rel="alternate" title="ATOM" type="application/atom+xml">
-    <link href="/front.css" media="screen" rel="stylesheet" type="text/css">
-    <script src="/lib.js" type="text/javascript"></script> 
+    <%= tag 'link', nil, :href => '/front.css', :media => 'screen', :rel => 'stylesheet', :type => 'text/css', :invalidate => :href %>
+    <%= tag 'script', '', :src => '/lib.js', :type => 'text/javascript', :invalidate => :src %>
   </head>
 
   <body>
