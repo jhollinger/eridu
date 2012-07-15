@@ -4,18 +4,18 @@ describe Post, :type => :request do
   before :each do
     @today = Time.now - 3000
     @future = @today + 9000000
-    [{title: 'Post A', slug: 'lorem-ipsum-a', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', published_at: @today, edited_at: @today},
-     {title: 'Post B', slug: 'lorem-ipsum-b', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', :tag_list => 'foo', published_at: @today, edited_at: @today},
-     {title: 'Post C', slug: 'lorem-ipsum-c', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', published_at: @today, edited_at: @today},
-     {title: 'Post D', slug: 'lorem-ipsum-d', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', published_at: @today, edited_at: @today},
-     {title: 'Post E', slug: 'lorem-ipsum-e', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', published_at: @today, edited_at: @today},
-     {title: 'Post F', slug: 'lorem-ipsum-f', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', published_at: @today, edited_at: @today},
-     {title: 'Post G', slug: 'lorem-ipsum-g', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', published_at: @today, edited_at: @today},
-     {title: 'Post H', slug: 'lorem-ipsum-h', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', published_at: @today, edited_at: @today},
-     {title: 'Post I', slug: 'lorem-ipsum-i', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', published_at: @today, edited_at: @today},
-     {title: 'Post J', slug: 'lorem-ipsum-j', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', :tag_list => 'foo', published_at: @today, edited_at: @today},
-     {title: 'Post K', slug: 'lorem-ipsum-k', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', :tag_list => 'foo', published_at: @today, edited_at: @today},
-     {title: 'Post L', slug: 'lorem-ipsum-l', body: 'Lorem ipsum dolor sit amet', body_html: '<p>Lorem ipsum dolor sit amet</p>', :tag_list => 'foo', published_at: @future, edited_at: @today}].
+    [{title: 'Post A', body: 'Lorem ipsum dolor sit amet', published_at: @today, edited_at: @today},
+     {title: 'Post B', body: 'Lorem ipsum dolor sit amet', :tag_list => 'foo', published_at: @today, edited_at: @today},
+     {title: 'Post C', body: 'Lorem ipsum dolor sit amet', published_at: @today, edited_at: @today},
+     {title: 'Post D', body: 'Lorem ipsum dolor sit amet', published_at: @today, edited_at: @today},
+     {title: 'Post E', body: 'Lorem ipsum dolor sit amet', published_at: @today, edited_at: @today},
+     {title: 'Post F', body: 'Lorem ipsum dolor sit amet', published_at: @today, edited_at: @today},
+     {title: 'Post G', body: 'Lorem ipsum dolor sit amet', published_at: @today, edited_at: @today},
+     {title: 'Post H', body: 'Lorem ipsum dolor sit amet', published_at: @today, edited_at: @today},
+     {title: 'Post I', body: 'Lorem ipsum dolor sit amet', published_at: @today, edited_at: @today},
+     {title: 'Post J', body: 'Lorem ipsum dolor sit amet', :tag_list => 'foo', published_at: @today, edited_at: @today},
+     {title: 'Post K', body: 'Lorem ipsum dolor sit amet', :tag_list => 'foo', published_at: @today, edited_at: @today},
+     {title: 'Post L', body: 'Lorem ipsum dolor sit amet', :tag_list => 'foo', published_at: @future, edited_at: @today}].
     each { |attrs| Post.create(attrs) }
   end
 
@@ -27,7 +27,7 @@ describe Post, :type => :request do
   end
 
   it 'should show a post at the permalink path' do
-    visit "/#{@today.strftime('%Y/%m/%d')}/lorem-ipsum-j"
+    visit "/#{@today.strftime('%Y/%m/%d')}/post-j"
     page.should have_content 'Lorem ipsum dolor sit amet'
   end
 

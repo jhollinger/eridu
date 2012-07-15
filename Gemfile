@@ -9,7 +9,6 @@ gem 'dm-validations'
 gem 'dm-timestamps'
 gem 'dm-aggregates'
 gem 'dm-migrations'
-gem 'dm-transactions'
 gem 'dm-tags'
 gem 'mail', '>=2.4.0'
 gem 'chronic'
@@ -24,4 +23,5 @@ group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'dm-transactions'
 end
