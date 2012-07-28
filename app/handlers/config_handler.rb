@@ -9,7 +9,7 @@ class ConfigHandler < AbstractHandler
     params.nilify! unless request.get?
   end
 
-  configure :production, :development do
+  configure :development do
     enable :logging
   end
 

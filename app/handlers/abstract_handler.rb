@@ -12,4 +12,8 @@ class AbstractHandler < Sinatra::Base
     include Rack::Recaptcha::Helpers if Conf[:recaptcha]
     alias_method :h, :escape_html
   end
+
+  configure :development do
+    register Sinatra::Reloader
+  end
 end
