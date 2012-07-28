@@ -5,10 +5,6 @@ class ConfigHandler < AbstractHandler
   use Rack::OpenID
   use Rack::Recaptcha, :public_key => Conf[:recaptcha, :public_key], :private_key => Conf[:recaptcha, :private_key] if Conf[:recaptcha]
 
-  before do
-    params.nilify! unless request.get?
-  end
-
   configure :development do
     enable :logging
   end

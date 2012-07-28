@@ -15,4 +15,8 @@ class AbstractHandler < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
   end
+
+  before do
+    params.nilify! unless request.get?
+  end
 end
