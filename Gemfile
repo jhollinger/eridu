@@ -25,3 +25,7 @@ group :test do
   gem 'database_cleaner'
   gem 'dm-transactions'
 end
+
+group :development do
+  gem 'sinatra-reloader', :require => 'sinatra/reloader'
+end

@@ -13,23 +13,7 @@ class AbstractHandler < Sinatra::Base
     alias_method :h, :escape_html
   end
 
-  before do
-    params.nilify! unless request.get?
-  end
-
-  configure :production, :development do
-    enable :logging
-  end
-
-  configure :production do
-    not_found do
-      erb :"errors/404"
-    end
-
-    error do
-      mail Conf[:author, :email], 'Eridu Exception', :exception if Conf[:mail, :errors]
-      status 500
-      erb :"errors/500"
-    end
+  configure :development do
+    register Sinatra::Reloader
   end
 end
