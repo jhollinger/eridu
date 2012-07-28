@@ -87,10 +87,8 @@ img.left {
   padding: 10px 15px 15px 0px;
 }
 
-.meta {
-  font-size: 80%;
-  color: #8c8c8c;
-}
+.meta { font-size: 80% }
+.meta, .meta a { color: #8c8c8c !important }
 
 .sink {
   position: absolute;
