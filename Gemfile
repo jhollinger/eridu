@@ -1,7 +1,6 @@
 source 'http://rubygems.org/'
 
 gem 'sinatra', '1.3.2', :require => 'sinatra/base'
-gem 'sinatra-flash', :require => 'sinatra/flash'
 gem 'dm-core'
 gem 'dm-sqlite-adapter'
 gem 'dm-types', '>=1.2.1'
