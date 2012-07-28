@@ -18,6 +18,7 @@ module AdminHelper
   def admin_post_path(post); "/admin/posts/#{post.id}"; end
   def admin_comment_path(comment); "/admin/comments/#{comment.id}"; end
   def admin_page_path(page); "/admin/pages/#{page.id}"; end
+  def admin_media_path(file); "/admin/media/#{file}"; end
 
   # Prepends admin/ to the template, sets the layout to admin/layout.
   def admin_erb(template, options={:layout => :"admin/layout"})

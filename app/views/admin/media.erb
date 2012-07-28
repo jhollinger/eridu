@@ -1,0 +1,34 @@
+<h1>Your media</h1>
+
+<div id="dropbox" class="box">Drag and drop new files here...</div>
+
+<div class="box">
+<% if @files.any? %>
+  <table id="media">
+  <% @files.each do |filepath| %>
+    <tr>
+      <td><%= link_to filepath, filepath %></td>
+      <td><%= link_to icon_tag(:delete), "/admin#{filepath}", :method => :delete, :confirm => "Are you sure you want to delete #{filepath}" %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <em class="light">You have not uploaded any media</em>
+<% end %>
+</div>
+
+<script>
+  var box = document.getElementById('dropbox')
+
+  // Initialize dropbox
+  if ( typeof(FileReader) != "undefined" ) {
+    var dropbox = new Dropbox(box, '/admin/media')
+    dropbox.success = function(file, filepath) {
+      $('#media').append('<tr><td><a href="'+filepath+'">'+filepath+'</a></td>'+
+        '<td><a href="/admin'+filepath+'" data-method="delete" data-confirm="Are you sure you want to delete '+filepath+'?"><%= icon_tag :delete %></a></td></tr>')
+    }
+  // No support
+  } else {
+    box.innerHTML = 'You are using an inferior browser; media uploads are not supported'
+  }
+</script>

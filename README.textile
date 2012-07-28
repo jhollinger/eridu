@@ -35,12 +35,12 @@ h2. Philosophy
 * OpenID is better than yet-another-auth system
 * Textile is awesome
 * Sinatra is perfect for this; Ruby on Rails is overkill
-* Everyone wants live comment preview, reCAPTCHA spam protection, and email notifications
+* Everyone wants live comment preview, reCAPTCHA spam protection, email notifications, and an easy to upload media
 * Few really want multiple sites, authors, skins and arcane templating languages
 * Responsive layouts are good
 * You should be running Ruby 1.9
 
-Framework choices aside, Eridu differs from its progenitor, Enki, mainly in the number of bundled features. These include reCAPTCHA spam protection, email notifications, and a responsive layout. While Enki leaves these "extras" as an exercise to the reader, Eridu pragmatically includes these de facto necessities.
+Framework choices aside, Eridu differs from its progenitor, Enki, mainly in the number of bundled features. These include reCAPTCHA spam protection, email notifications, a responsive layout, and a media uploader. While Enki leaves these "extras" as an exercise to the reader, Eridu pragmatically includes these de facto necessities.
 
 h2. Enabling Optional Features
 

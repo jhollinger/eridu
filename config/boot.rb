@@ -3,6 +3,7 @@ APP_ENV = ENV['RACK_ENV'] ? ENV['RACK_ENV'].to_sym : :development
 
 # Load libraries and gems
 ENV['BUNDLE_GEMFILE'] ||= ROOT['Gemfile']
+require 'base64'
 require 'yaml'
 require 'bundler/setup'
 Bundler.require(:default, APP_ENV)

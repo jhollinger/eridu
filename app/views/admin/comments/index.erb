@@ -1,6 +1,7 @@
 <h1>Comments</h1>
 
 <div class="box">
+<% if @comments.any? %>
   <table>
     <tr class="shiny">
       <th>Created&nbsp;at</th>
@@ -24,4 +25,7 @@
     </tr>
   <% end %>
   </table>
+<% else %>
+  <em class="light">You have not received any comments</em>
+<% end %>
 </div>

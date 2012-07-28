@@ -1,6 +1,7 @@
 <h1>Your pages</h1>
 
 <div class="box">
+<% if @pages.any? %>
   <table>
     <tr class="shiny">
       <th>Title</th>
@@ -19,4 +20,7 @@
     </tr>
   <% end %>
   </table>
+<% else %>
+  <em class="light">You have not created any pages</em>
+<% end %>
 </div>

@@ -1,7 +1,5 @@
 class AdminPostsAndPagesHandler < AbstractHandler
-  helpers do
-    include AdminHelper
-  end
+  helpers AdminHelper
 
   # Create identical handlers for Posts and Pages
   [Post, Page].each do |klass|

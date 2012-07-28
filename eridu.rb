@@ -9,6 +9,7 @@ class Eridu < AbstractHandler
   use AdminHandler
   use AdminPostsAndPagesHandler
   use AdminCommentsHandler
+  use AdminMediaHandler
   use AdminTrashHandler
 
   # Home page

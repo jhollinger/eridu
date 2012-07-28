@@ -5,6 +5,7 @@ body {
   padding: 15px;
   font-weight: 300;
   color: #2c2c2c;
+  cursor: default;
 }
 
 h1 { font-size: 20px }

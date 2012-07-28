@@ -2,6 +2,7 @@ body {
   margin: 0px;
   padding: 0px;
   background-color: #ddd;
+  cursor: default;
 }
 
 body, textarea {
@@ -76,6 +77,17 @@ a, a:visited {
 .boxes { overflow: auto }
 .boxes > .box { float: left; margin-right: 10px }
 .boxes > .box:last-of-type { margin-right: 0px }
+
+#dropbox {
+  text-align: center;
+  color: #999;
+  font-size: 1.3em;
+}
+
+#dropbox.active {
+  color: #777;
+  background-color: #efe;
+}
 
 img.icon { margin-bottom: -4px }
 img.left {

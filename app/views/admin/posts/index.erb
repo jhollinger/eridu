@@ -1,6 +1,7 @@
 <h1>Your posts</h1>
 
 <div class="box">
+<% if @posts.any? %>
   <table>
     <tr class="shiny">
       <th>Published&nbsp;at</th>
@@ -24,4 +25,7 @@
     </tr>
   <% end %>
   </table>
+<% else %>
+  <em class="light">You have not created any posts</em>
+<% end %>
 </div>
