@@ -25,6 +25,11 @@ module Helpers
     @header_links ||= [%w[home /], %w[archives /archives], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *Conf[:links]]
   end
 
+  # Obfuscate an email address
+  def obfuscate(str)
+    str.gsub('@', ' at ').gsub('.', ' dot ')
+  end
+
   # Whether or not to show the reCAPTCHA form
   def show_recaptcha?
     Conf[:recaptcha] && !session[:sentience_verified] 
