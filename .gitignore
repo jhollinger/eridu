@@ -1,3 +1,4 @@
 .bundle/
 config/*.yml
 *.sqlite3
+public/media/*
