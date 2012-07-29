@@ -4,20 +4,20 @@
 <% if @comments.any? %>
   <table>
     <tr class="shiny">
-      <th>Created&nbsp;at</th>
-      <th>Commentor</th>
+      <th>Name</th>
       <th>Excerpt</th>
       <th>Post</th>
+      <th>Created</th>
       <th></th>
     </tr>
 
-  <% date = '%b %e, %Y' %>
+  <% today = Date.today %>
   <% @comments.each do |comment| %>
     <tr>
-      <td><%= comment.created_at.strftime(date) %></td>
-      <td><%= comment.author_url ? link_to(h(comment.author), comment.author_url) : h(comment.author) %></td>
+      <td class="light"><%= comment.author_url ? link_to(h(comment.author), comment.author_url) : h(comment.author) %></td>
       <td><%= link_to h(comment.blurb), admin_comment_path(comment) %></td>
       <td><%= link_to comment.post.title, admin_post_path(comment.post) %></td>
+      <td class="light"><%= comment.created_at.strftime("%b %e#{', %Y' unless comment.created_at.year == today.year}") %></td>
       <td>
         <%= link_to icon_tag(:edit), admin_comment_path(comment) %>
         <%= link_to icon_tag(:delete), admin_comment_path(comment), :method => :delete, :confirm => "Are you sure you want to delete the comment from #{h(comment.author)}" %>

@@ -96,7 +96,11 @@ img.left {
 }
 .center { text-align: center }
 
-table { border-collapse: collapse }
+table {
+  border-collapse: collapse;
+  text-align: left;
+}
+table th { padding: 0px 5px }
 table td {
   padding: 5px;
   border-bottom: 1px solid #ccc;
