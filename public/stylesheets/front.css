@@ -123,12 +123,12 @@ img.left {
   
   #dox {
     padding-left: 20px;
-    position: fixed;
-    top: 0;
+    position: relative;
+    width: auto;
     min-height: 70px;
     height: 70px;
+    border-right: none;
     border-bottom: 1px solid #aaa;
-    width: 100%;
     background-color: #fff;
   }
   
@@ -140,8 +140,8 @@ img.left {
   
   #links-small {
     position: absolute;
-    top: 30px;
-    right: 45px;
+    bottom: 20px;
+    right: 20px;
   }
   
   #links-small .link {
@@ -160,7 +160,7 @@ img.left {
   }
   
   #main {
-    margin: 110px 10px 50px 0;
+    margin: 10px 10px 50px 0;
     width: 100%;
   }
   
