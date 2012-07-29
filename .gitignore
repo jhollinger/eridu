@@ -1,4 +1,5 @@
 .bundle/
 config/*.yml
 *.sqlite3
+public/icon.png
 public/media/*
