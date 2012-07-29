@@ -20,9 +20,9 @@ module Helpers
     "/pages/#{page.slug}"
   end
 
-  # Returns and caches an array of links for the header
+  # Returns an array of links for the header
   def header_links
-    @header_links ||= [%w[home /], %w[archives /archives], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *Conf[:links]]
+    [%w[home /], %w[archives /archives], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *Conf[:links]]
   end
 
   # Obfuscate an email address

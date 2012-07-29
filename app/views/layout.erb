@@ -15,22 +15,17 @@
       <h1><a href="/"><%= Conf[:title] %></a></h1>
       <span class="meta"><%= Conf[:tagline] %></span>
 
-      <div id="links" class="large">
+      <div id="links">
       <% header_links.each do |title, url| %>
-        &gt; <%= link_to title, url %><br />
+        <span class="link"><span class="large">&gt; </span><%= link_to title, url %></span>
       <% end %>
 
-        <br />
-
-      <% Tag.ordered.each do |tag| %>
-        &gt; <%= link_to tag.name, "/#{tag}" %><br />
-      <% end %>
-      </div>
-
-      <div id="links-small" class="small">
-      <% header_links.each do |title, url| %>
-        <span class="link"><%= link_to title, url %></span>
-      <% end %>
+        <div class="large">
+          <br />
+        <% Tag.ordered.each do |tag| %>
+          <span class="link">&gt; <%= link_to tag.name, "/#{tag}" %></span>
+        <% end %>
+        </div>
       </div>
 
       <div class="large meta sink">

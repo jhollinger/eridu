@@ -53,6 +53,7 @@ header, footer, section, article { display: block }
   margin-top: 100px;
   font-size: 85%; 
 }
+#links .link { display: block }
 
 #main-container { margin-left: 250px; }
 
@@ -112,11 +113,10 @@ img.left {
 }
 
 @media (max-width: 760px) {
+  body { padding: 0; margin: 0; }
 
   .large { display: none; }
   .small { display: block; }
-  
-  .post { padding-left: 15px; }
   
   h1 { font-size: 24px; }
   h2 { font-size: 20px; }
@@ -132,33 +132,20 @@ img.left {
     background-color: #fff;
   }
   
-  #dox p {
-    position: relative;
-    bottom: 12px;
-    font-size: 120%;
-  }
-  
-  #links-small {
+  #links {
     position: absolute;
     bottom: 20px;
     right: 20px;
+    font-size: 100%; 
   }
   
-  #links-small .link {
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 3px solid #ddd;
+  #links .link {
+    display: inline;
+    padding: 0px 8px 0px 5px;
+    border-right: 1px solid #aaa;
   }
-  
-  #links-small .link:hover {
-    background-color: #ddd;
-  }
-  
-  pre code { 
-    font-size: 10px;
-    line-height: 12px;
-  }
-  
+  #links .link:last-of-type { border-right: none }
+
   #main {
     margin: 10px 10px 50px 0;
     width: 100%;
@@ -166,9 +153,8 @@ img.left {
   
   #main-container {
     margin: 0 10px 0 5px;
+    padding-left: 15px;
   }
-  
-  body { padding: 0; margin: 0; }
   
   #bars {
     position: absolute;
@@ -178,7 +164,6 @@ img.left {
 }
 
 @media (max-width: 500px) {
-  #links-small { display: none; }
-  #toto-creds { display: none; }
+  #links { display: none; }
 }
 
