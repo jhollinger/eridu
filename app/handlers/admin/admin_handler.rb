@@ -19,12 +19,6 @@ class AdminHandler < AbstractHandler
     end
   end
 
-  # Site stats
-  get '/admin/stats/?' do
-    @posts, @comments, @tags = Post.count, Comment.count, Tag.count
-    admin_erb :stats
-  end
-
   # Login form
   get '/admin/login/?' do
     admin_erb :login

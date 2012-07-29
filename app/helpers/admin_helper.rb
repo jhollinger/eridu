@@ -4,7 +4,6 @@ module AdminHelper
          ['Pages <a href="/admin/pages/new">(+)</a>', '/admin/pages', %r{/admin/pages}],
          ['Comments', '/admin/comments', %r{/admin/comments}],
          ['Media', '/admin/media', '/admin/media'],
-         ['Stats', '/admin/stats', '/admin/stats'],
          ['Trash', '/admin/trash', %r{/admin/trash}]]
 
   # Returns a navigation array. If one matches the current page, the third element is "true"
