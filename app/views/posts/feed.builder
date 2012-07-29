@@ -8,7 +8,6 @@ xml.feed :"xml:lang" => 'en-US', :xmlns => 'http://www.w3.org/2005/Atom' do
   xml.title Conf[:title]
   xml.subtitle Conf[:tagline]
   xml.updated @posts.first.published_at unless @posts.empty?
-  xml.generator 'Eridu', :uri => 'http://jordanhollinger.com'
 
   xml.author do
     xml.name Conf[:author, :name]
