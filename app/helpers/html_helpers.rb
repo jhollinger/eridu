@@ -43,14 +43,10 @@ module HTMLHelpers
   # Append a Unix timestamp to the specified path
   def invalidate_asset_cache!(options)
     if attr = options.delete(:invalidate)
-      if stamp = asset_timestamp(ROOT['public', options[attr]])
+      path = ROOT['public', options[attr]]
+      if stamp = (ASSET_TIMESTAMPS[path] ||= File.mtime(path).to_i rescue nil)
         options[attr] += options[attr].include?('?') ? "&#{stamp}" : "?#{stamp}"
       end
     end
-  end
-
-  # Retrieve or set a cache of mtimes for assets
-  def asset_timestamp(path)
-    ASSET_TIMESTAMPS[path] ||= File.new(path).mtime.to_i.to_s rescue nil
   end
 end

@@ -37,8 +37,7 @@ module Helpers
 
   # Returns true if the user is signed in, false if not
   def signed_in?
-    return false unless session[:token] and session[:salt]
-    AuthToken.new(session[:salt]) === session[:token]
+    session[:token] and session[:salt] and AuthToken.new(session[:salt]) === session[:token]
   end
 
   # Send an email. Examples:
