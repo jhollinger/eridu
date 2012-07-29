@@ -1,7 +1,7 @@
 require './config/boot'
 
 class Eridu < AbstractHandler
-  # Configure Sinatra
+  # Configure Eridu
   use ConfigHandler
 
   # Load additional routes

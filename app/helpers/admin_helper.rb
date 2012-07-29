@@ -23,4 +23,9 @@ module AdminHelper
   def admin_erb(template, options={:layout => :"admin/layout"})
     erb :"admin/#{template}", options
   end
+
+  # Returns true if the user is signed in, false if not
+  def signed_in?
+    session[:token] and session[:salt] and AuthToken.new(session[:salt]) === session[:token]
+  end
 end

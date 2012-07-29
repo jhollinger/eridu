@@ -30,16 +30,6 @@ module Helpers
     str.gsub('@', ' at ').gsub('.', ' dot ')
   end
 
-  # Whether or not to show the reCAPTCHA form
-  def show_recaptcha?
-    Conf[:recaptcha] && !session[:sentience_verified] 
-  end
-
-  # Returns true if the user is signed in, false if not
-  def signed_in?
-    session[:token] and session[:salt] and AuthToken.new(session[:salt]) === session[:token]
-  end
-
   # Send an email. Examples:
   #  mail user@example.com, 'Foo', :a_template
   #  mail user@example.com, 'Foo', 'Some text'

@@ -23,7 +23,7 @@
     <h3>Comment Preview</h3>
     <div id="live-preview"></div>
 
-  <% if show_recaptcha? %>
+  <% if Conf[:recaptcha] %>
     <p><input type="button" class="recaptcha-related show-recaptcha" value="Post Comment"></p>
 
     <div class="hidden recaptcha-related">
@@ -38,7 +38,7 @@
 
   <script>
     $(function() {
-    <% if show_recaptcha? %>
+    <% if Conf[:recaptcha] %>
       // Scroll to the bottom of the page when showing/hiding recaptcha fields
       $('.recaptcha-related').bind('recaptcha', function() {
         $(this).toggle()
@@ -52,7 +52,7 @@
       })
     <% end %>
 
-    <% if @comment and show_recaptcha? %>
+    <% if @comment and Conf[:recaptcha] %>
       // Show reCAPTCHA because it's wrong
     $('.recaptcha-related').trigger('recaptcha')
 
