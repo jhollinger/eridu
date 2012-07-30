@@ -20,6 +20,7 @@ pre {
   white-space: pre-wrap;
   padding: 10px;
   background-color: #eee;
+  margin: 0;
 }
 
 blockquote {

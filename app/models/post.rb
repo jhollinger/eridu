@@ -59,7 +59,7 @@ class Post
 
   # Returns true if this Post has a teaser
   def teaser?
-    !self.teaser.nil?
+    !self.teaser.blank?
   end
 
   # Returns true if the current edit was minor
