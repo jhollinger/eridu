@@ -20,8 +20,8 @@ pre {
   white-space: pre-wrap;
   padding: 10px;
   background-color: #eee;
-  margin: 0;
 }
+.CodeRay + .CodeRay pre { margin-top: -16px; }
 
 blockquote {
   font-style: italic;
