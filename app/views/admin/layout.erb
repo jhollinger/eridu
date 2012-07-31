@@ -5,11 +5,11 @@
     <meta name="viewport" content="initial-scale=1.0" />
     <title>Admin / <%= Conf[:title] %></title>
 
-    <%= tag 'link', nil, :href => '/stylesheets/admin.css', :media => 'screen', :rel => 'stylesheet', :type => 'text/css', :invalidate => :href %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <%= tag 'script', '', :src => '/javascripts/lib.js', :invalidate => :src %>
+    <%= tag 'script', '', :src => '/javascripts/admin.js', :invalidate => :src %>
 
-    <%= tag 'script', '', :src => '/javascripts/lib.js', :type => 'text/javascript', :invalidate => :src %>
-    <%= tag 'script', '', :src => '/javascripts/dropbox.js', :type => 'text/javascript', :invalidate => :src %>
-    <%= tag 'script', '', :src => '/javascripts/admin.js', :type => 'text/javascript', :invalidate => :src %>
+    <%= tag 'link', nil, :href => '/stylesheets/admin.css', :media => 'screen', :rel => 'stylesheet', :type => 'text/css', :invalidate => :href %>
   </head>
 
   <body>
