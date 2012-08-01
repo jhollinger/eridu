@@ -1,7 +1,7 @@
 # Configuration options for your blog - customise to taste
 :title: My Eridu Blog
 :tagline: My tagline is better
-:domain: eridublog.com
+:url: http://eridublog.com/
 
 # About the author
 :author:

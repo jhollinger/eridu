@@ -2,7 +2,7 @@ xml.instruct! :xml, :version => '1.0', :encoding => 'UTF-8'
 xml.feed :"xml:lang" => 'en-US', :xmlns => 'http://www.w3.org/2005/Atom' do
   xml.id "tag:#{Conf[:domain]},2008:/posts"
 
-  xml.link :rel => 'self', :type => 'application/atom+xml', :href => "#{Conf[:url]}/#{@tag}.atom"
+  xml.link :rel => 'self', :type => 'application/atom+xml', :href => "#{Conf[:url]}#{@tag}.atom"
   xml.link :rel => 'alternate', :type => 'text/html', :href => "#{Conf[:url]}"
 
   xml.title Conf[:title]

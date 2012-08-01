@@ -15,18 +15,13 @@ module Conf
 
   # Loads all config files as a Hash
   def self.load_config!
-    root_config = {}
-    # Load all config
-    Dir.glob(ROOT['config', '*.yml']).each do |file_path|
+    @@config = Dir.glob(ROOT['config', '*.yml']).inject({}) do |root_config, file_path|
+      yaml = Psych.load_file(file_path)
       name = File.basename(file_path).gsub(/\.yml$/, '').to_sym
       config = name == :eridu ? root_config : root_config[name] = {}
-      config.merge!(Psych.load_file(file_path))
+      config.merge!(yaml[APP_ENV] || yaml)
+      root_config
     end
-
-    # A little cleanup
-    root_config[:database] = root_config[:database][APP_ENV]
-    root_config[:url] = "http://#{root_config[:domain]}"
-
-    @@config = root_config
+    @@config[:domain] = URI.parse(@@config[:url]).host
   end
 end
