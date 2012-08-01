@@ -7,10 +7,6 @@ Eridu is heavily inspired by "Enki":https://github.com/xaviershay/enki. Coders k
 h2. Quick Start
 
 <pre>
-# You may need libxml2 and libxslt1 and their headers
-# On Debian-based systems: apt-get install libxml2-dev libxslt1-dev
-# On Mac OS X: no action required
-
 git clone git://github.com/jhollinger/eridu.git eridu
 cd eridu
 bundle install    # Install all the required gems
@@ -19,42 +15,49 @@ bundle install    # Install all the required gems
 cp config/database.yml.template config/database.yml
 cp config/eridu.yml.template config/eridu.yml
 
-rake db:migrate   # Initialize the database
-ruby eridu.rb     # Start the server at http://localhost:4567.
-                  # Or use "bundle exec rackup", which starts
-                  # the server at http://localhost:9292.
-# Go to http://localhost:4567/admin in your browser to begin
+rake db:migrate   # Initialize or update the database
+ruby eridu.rb     # Start the server at http://localhost:4567
 </pre>
 
 h2. Philosophy
 
+* Sinatra is perfect for this; Ruby on Rails is overkill
 * /yyyy/mm/dd/post-title is a good URL for your posts
 * Atom is a good publishing protocol
 * Google does search better than you or I
 * You don’t need a plugin system when you’ve got a lean, clean code base
 * OpenID is better than yet-another-auth system
 * Textile is awesome
-* Sinatra is perfect for this; Ruby on Rails is overkill
-* Everyone wants live comment preview, reCAPTCHA spam protection, email notifications, and an easy to upload media
+* Everyone wants live comment preview, reCAPTCHA'd comments, email notifications, media upload, responsive layout, and syntax highlighting
 * Few really want multiple sites, authors, skins and arcane templating languages
-* Responsive layouts are good
 * You should be running Ruby 1.9
 
-Framework choices aside, Eridu differs from its progenitor, Enki, mainly in the number of bundled features. These include reCAPTCHA spam protection, email notifications, a responsive layout, and a media uploader. While Enki leaves these "extras" as an exercise to the reader, Eridu pragmatically includes these de facto necessities.
+Framework choices aside, Eridu differs from its progenitor, Enki, mainly in the number of bundled features. These include reCAPTCHA spam protection, email notifications, a responsive layout, simple media management, and syntax highlighting. While Enki leaves these "extras" as an exercise to the reader, Eridu pragmatically includes these de facto necessities.
 
 h2. Enabling Optional Features
 
-Eridu includes several optional features that are necessarily disabled by default: reCAPTCHA spam protection and email notifications. To enable them, look in @config/recaptcha.yml.template@ and @config/mail.yml.template@.
+Several of the above features require configuration and are necessarily disabled by default. To enable them, look in @config/recaptcha.yml.template@ and @config/mail.yml.template@.
+
+h2. Syntax Highlighting with Coderay Plugin for Textile
+
+<pre>
+# Single line
+@[ruby]puts "It's ruby codez!"@
+
+# Multi-line
+bc[ruby].. puts "It's ruby codez!"
+puts "and more"
+
+puts "and more"
+
+p. Back to a Textile paragraph
+</pre>
 
 h2. Compatibility
 
 Tested on MySQL, Postgres, and SQLite. Heroku should be possible, but is untested.
 
 Enki and Eridu are so similar that @rake db:migrate:enki@ easily converts an Enki database to Eridu (it will leave some unused tables and columns behind, though). Also their URL structures are identical, so your existing links and page rankings won't even notice.
-
-h2. Development Notes
-
-The main public face of the app is in @eridu.rb@, and additional routes are under @app/handlers@. Otherwise, the code layout is very similar to Rails'.
 
 h2. License
 
