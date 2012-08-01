@@ -1,21 +1,21 @@
-development:
-  adapter: sqlite3
-  path: development.sqlite3
+:development:
+  :adapter: sqlite3
+  :path: development.sqlite3
 
-test:
-  adapter: sqlite3
-  path: test.sqlite3
+:test:
+  :adapter: sqlite3
+  :path: test.sqlite3
 
-production:
-  adapter: sqlite3
-  path: production.sqlite3
+:production:
+  :adapter: sqlite3
+  :path: production.sqlite3
 
 # Example for MySQL and Postgres
 # Note, you must add dm-mysql-adapter or dm-postgres-adapter to the Gemfile, respectively
 # 
-# production:
-#   adapter: mysql|postgres
-#   host: localhost
-#   database: eridu
-#   username: username
-#   password: password
+# :production:
+#   :adapter: mysql|postgres
+#   :host: localhost
+#   :database: eridu
+#   :username: username
+#   :password: password
