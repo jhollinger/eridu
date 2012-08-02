@@ -14,3 +14,6 @@
 # Links you want to share (optional)
 :links:
   :twitter: https://twitter.com/yourusername
+
+# A secret token used to protect your session. CHANGE IT!
+:secret_token: lasdfADSF9842jasdASFDdlkjasfd97124ADLJpqQWERjlkzxalsldfhj198L

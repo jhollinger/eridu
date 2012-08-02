@@ -39,9 +39,9 @@ class AdminHandler < AbstractHandler
 
     if success
       session.clear
-      token = AuthToken.new
+      token = MortalToken.new
       session[:salt] = token.salt
-      session[:token] = token.to_s
+      session[:token] = token.hash
       redirect('/admin')
     else
       admin_erb(:login)
