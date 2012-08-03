@@ -63,7 +63,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.18)
-    mortal-token (0.0.1)
+    mortal-token (0.1.0)
     multi_json (1.0.4)
     nokogiri (1.5.4)
     polyglot (0.3.3)
