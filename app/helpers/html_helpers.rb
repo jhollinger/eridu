@@ -1,6 +1,7 @@
 module HTMLHelpers
   # A cache of mtimes for assets
   ASSET_TIMESTAMPS = {}
+  ASSET_MUTEX = Mutex.new
 
   # Displays a list of errors on a record
   def errors_for(obj)
@@ -44,7 +45,7 @@ module HTMLHelpers
   def invalidate_asset_cache!(options)
     if attr = options.delete(:invalidate)
       path = ROOT['public', options[attr]]
-      if stamp = (ASSET_TIMESTAMPS[path] ||= File.mtime(path).to_i rescue nil)
+      if stamp = ASSET_MUTEX.synchronize { ASSET_TIMESTAMPS[path] ||= File.mtime(path).to_i rescue nil }
         options[attr] += options[attr].include?('?') ? "&#{stamp}" : "?#{stamp}"
       end
     end

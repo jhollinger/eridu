@@ -4,17 +4,14 @@ module Conf
 
   # Access the config hash
   def self.[](*path)
-    load_config! if @@config.nil?
     path.inject(@@config) do |config, item|
       break nil unless config.is_a? Hash
       config[item]
     end
   end
 
-  private
-
   # Loads all config files as a Hash
-  def self.load_config!
+  def self.load!
     @@config = Dir.glob(ROOT['config', '*.yml']).inject({}) do |root_config, file_path|
       yaml = Psych.load_file(file_path)
       name = File.basename(file_path).gsub(/\.yml$/, '').to_sym

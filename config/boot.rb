@@ -10,6 +10,7 @@ Bundler.require(:default, APP_ENV)
 
 # Load everything in lib
 Dir.glob(ROOT['lib', '**', '*.rb']).each { |lib| require lib }
+Conf.load!
 
 # Set up mail
 Mail.defaults do
