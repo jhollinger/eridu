@@ -1,0 +1,25 @@
+<section id="comments">
+  <a name="comments"></a>
+
+<% if @post.comments.count > 0 %>
+  <% dtfmt = '%B %e, %Y at %I:%M %P' %>
+  <h3>Comments</h3>
+
+  <% @post.comments.all(:order => :created_at).each do |comment| %>
+  <article class="comment">
+    <a name="comment-<%= comment.id %>"></a>
+    <header>
+      <h4><%= comment.author_url ? link_to(h(comment.author), comment.author_url) : h(comment.author) %></h4>
+      <small class="meta"><%= comment.created_at.strftime(dtfmt) %></small>
+    </header>
+
+    <section class="content">
+      <%= comment.body_html %>
+    </section>
+  </article>
+  <% end %>
+<% end %>
+
+  <h3>Post a Comment</h3>
+  <%= erb :"posts/_new_comment", :locals => {:post => @post} %>
+</section>

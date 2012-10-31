@@ -9,12 +9,15 @@
       <tr>
         <td><%= link_to post.title, admin_post_path(post) %></td>
         <td class="light"><%= post.published_at.strftime("%b %e#{', %Y' unless post.published_at.year == today.year}") %></td>
+        <% unless Conf[:disqus] %>
         <td><%= link_to post.comments_count, permalink_path(post) %></td>
+        <% end %>
       </tr>
     <% end %>
     </table>
   </div>
 
+  <% unless Conf[:disqus] %>
   <div class="box">
     <h2>Latest Comments</h2>
     <table>
@@ -26,4 +29,5 @@
     <% end %>
     </table>
   </div>
+  <% end %>
 </div>

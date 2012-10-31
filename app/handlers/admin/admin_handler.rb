@@ -12,7 +12,7 @@ class AdminHandler < AbstractHandler
   get '/admin/?' do
     if signed_in?
       @posts = Post.recent
-      @comments = Comment.recent.group_by &:post
+      @comments = Comment.recent.group_by &:post unless Conf[:disqus]
       admin_erb :dashboard
     else
       admin_erb :login
@@ -52,5 +52,10 @@ class AdminHandler < AbstractHandler
   get '/admin/logout/?' do
     session.clear
     redirect '/admin'
+  end
+
+  # Preview Textile as HTML
+  post '/textile-preview' do
+    RedCloth.new(params[:body].to_s).to_html
   end
 end

@@ -51,3 +51,42 @@ namespace :db do
     end
   end
 end
+
+namespace :export do
+  desc "Export your Eridu comments to Disqus (http://help.disqus.com/customer/portal/articles/472150)"
+  task :comments do
+    xml = Builder::XmlMarkup.new
+    xml.instruct! :xml, :version => '1.0', :encoding => 'UTF-8'
+    xml.rss :version => '2.0', :"xmlns:content" => 'http://purl.org/rss/1.0/modules/content/',
+                               :"xmlns:dsq" => 'http://www.disqus.com/',
+                               :"xmlns:dc" => 'http://purl.org/dc/elements/1.1/',
+                               :"xmlns:wp" => 'http://wordpress.org/export/1.0/' do
+      xml.channel do
+        for post in Post.all
+          xml.item do
+            xml.title post.title
+            xml.link "#{Conf[:url]}#{post.permalink}"
+            xml.content(:encoded) { xml.cdata! post.body_html }
+            xml.dsq :thread_identifier, Conf[:disqus, :shortname]
+            xml.wp :post_date_gmt, post.published_at.new_offset(0).strftime('%Y-%m-%d %H:%M:%S')
+            xml.wp :comment_status, 'open'
+            for comment in post.comments
+              xml.wp :comment do
+                xml.wp :comment_id, comment.id
+                xml.wp :comment_author, comment.author
+                xml.wp :comment_author_email, comment.author_email
+                xml.wp :comment_author_url, comment.author_url
+                xml.wp :comment_author_IP
+                xml.wp :comment_date_gmt, comment.created_at.new_offset(0).strftime('%Y-%m-%d %H:%M:%S')
+                xml.wp(:comment_content) { xml.cdata! comment.body_html }
+                xml.wp :comment_approved, 1
+                xml.wp :comment_partent, 0
+              end
+            end
+          end
+        end
+      end
+    end
+    puts xml.target!
+  end
+end

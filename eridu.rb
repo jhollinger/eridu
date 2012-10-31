@@ -5,10 +5,10 @@ class Eridu < AbstractHandler
   use ConfigHandler
 
   # Load additional routes
-  use CommentsHandler
+  use CommentsHandler unless Conf[:disqus]
   use AdminHandler
   use AdminPostsAndPagesHandler
-  use AdminCommentsHandler
+  use AdminCommentsHandler unless Conf[:disqus]
   use AdminMediaHandler
   use AdminTrashHandler
 

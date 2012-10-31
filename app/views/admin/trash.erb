@@ -25,6 +25,7 @@
 <% end %>
 </div>
 
+<% unless Conf[:disqus] %>
 <div class="box">
   <h2>Comments</h2>
 <% if @comments.empty? %>
@@ -51,6 +52,7 @@
   </table>
 <% end %>
 </div>
+<% end %>
 
 <div class="box">
   <h2>Pages</h2>

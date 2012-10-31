@@ -1,10 +1,11 @@
 module AdminHelper
-  NAV = [['Dashboard', '/admin', '/admin'],
-         ['Posts <a href="/admin/posts/new">(+)</a>', '/admin/posts', %r{/admin/posts}],
-         ['Pages <a href="/admin/pages/new">(+)</a>', '/admin/pages', %r{/admin/pages}],
-         ['Comments', '/admin/comments', %r{/admin/comments}],
-         ['Media', '/admin/media', '/admin/media'],
-         ['Trash', '/admin/trash', %r{/admin/trash}]]
+  NAV = []
+  NAV << ['Dashboard', '/admin', '/admin']
+  NAV << ['Posts <a href="/admin/posts/new">(+)</a>', '/admin/posts', %r{/admin/posts}]
+  NAV << ['Pages <a href="/admin/pages/new">(+)</a>', '/admin/pages', %r{/admin/pages}]
+  NAV << ['Comments', '/admin/comments', %r{/admin/comments}] unless Conf[:disqus]
+  NAV << ['Media', '/admin/media', '/admin/media']
+  NAV << ['Trash', '/admin/trash', %r{/admin/trash}]
 
   # Returns a navigation array. If one matches the current page, the third element is "true"
   def nav

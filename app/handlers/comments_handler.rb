@@ -12,9 +12,4 @@ class CommentsHandler < AbstractHandler
       erb :"posts/show"
     end
   end
-
-  # Render Textile as HTML
-  post '/textile-preview' do
-    RedCloth.new(params[:body].to_s).to_html
-  end
 end
