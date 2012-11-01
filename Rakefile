@@ -65,7 +65,7 @@ namespace :export do
         for post in Post.all
           xml.item do
             xml.title post.title
-            xml.link "#{Conf[:url].gsub(%r{/$}, '')}#{post.permalink}"
+            xml.link post.permalink(Conf[:url])
             xml.content(:encoded) { xml.cdata! 'Body not needed' }
             xml.dsq :thread_identifier, post.id
             xml.wp :post_date_gmt, post.published_at.new_offset(0).strftime('%Y-%m-%d %H:%M:%S')

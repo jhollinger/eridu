@@ -52,9 +52,10 @@ class Post
   end
 
   # Returns this posts permalink
-  def permalink
+  def permalink(host=nil)
+    host = host.gsub(%r{/$}, '') unless host.nil?
     date = self.published_at
-    "/#{date.year}/#{date.strftime('%m')}/#{date.strftime('%d')}/#{self.slug}"
+    "#{host}/#{date.year}/#{date.strftime('%m')}/#{date.strftime('%d')}/#{self.slug}"
   end
 
   # Returns true if this Post has a teaser

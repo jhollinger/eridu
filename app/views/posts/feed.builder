@@ -17,7 +17,7 @@ xml.feed :"xml:lang" => 'en-US', :xmlns => 'http://www.w3.org/2005/Atom' do
   for post in @posts
     xml.entry do
       xml.id "tag:#{Conf[:domain]},2008:#{post.class.name}/#{post.id}"
-      xml.link :rel => 'alternate', :type => 'text/html', :href => "#{Conf[:url]}#{permalink_path(post)}"
+      xml.link :rel => 'alternate', :type => 'text/html', :href => post.permalink(Conf[:url])
       xml.published post.published_at
       xml.updated post.edited_at
       xml.title post.title
