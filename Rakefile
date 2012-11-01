@@ -54,8 +54,8 @@ end
 
 namespace :export do
   desc "Export your Eridu comments to Disqus (http://help.disqus.com/customer/portal/articles/472150)"
-  task :comments do
-    xml = Builder::XmlMarkup.new
+  task :disqus do
+    xml = Builder::XmlMarkup.new(:encoding => 'utf-8')
     xml.instruct! :xml, :version => '1.0', :encoding => 'UTF-8'
     xml.rss :version => '2.0', :"xmlns:content" => 'http://purl.org/rss/1.0/modules/content/',
                                :"xmlns:dsq" => 'http://www.disqus.com/',
@@ -65,9 +65,9 @@ namespace :export do
         for post in Post.all
           xml.item do
             xml.title post.title
-            xml.link "#{Conf[:url]}#{post.permalink}"
-            xml.content(:encoded) { xml.cdata! post.body_html }
-            xml.dsq :thread_identifier, Conf[:disqus, :shortname]
+            xml.link "#{Conf[:url].gsub(%r{/$}, '')}#{post.permalink}"
+            xml.content(:encoded) { xml.cdata! 'Body not needed' }
+            xml.dsq :thread_identifier, post.id
             xml.wp :post_date_gmt, post.published_at.new_offset(0).strftime('%Y-%m-%d %H:%M:%S')
             xml.wp :comment_status, 'open'
             for comment in post.comments
