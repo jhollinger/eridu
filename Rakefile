@@ -53,14 +53,28 @@ namespace :db do
 end
 
 namespace :export do
-  desc "Export your Eridu comments to Disqus (http://help.disqus.com/customer/portal/articles/472150)"
+  desc "Export your posts and pages to Jekyll/Octopress"
+  task :jekyll, :dir do |task, args|
+    dir = File.expand_path(args[:dir])
+    Post.all.each do |post|
+      filepath = File.join(dir, '_posts', "#{post.published_at.strftime('%Y-%m-%d')}-#{post.slug}.textile")
+      content = %Q|---\nlayout: post\ntitle: #{post.title}\ndate: #{post.published_at.strftime('%Y-%m-%d %H:%M')}\ncategories: [#{post.tag_list.join(', ')}]\ncomments: true\n---\n#{post.body}|
+      File.write(filepath, content)
+    end
+    Page.all.each do |page|
+      page_dir = File.join(dir, page.slug)
+      filepath = File.join(page_dir, 'index.textile')
+      content = %Q|---\nlayout: page\ntitle: #{page.title}\ndate: #{page.updated_at.strftime('%Y-%m-%d %H:%M')}\ncomments: false\nsharing: false\nfooter: false\n---\n#{page.body}|
+      Dir.mkdir(page_dir) unless Dir.exists? page_dir
+      File.write(filepath, content)
+    end
+  end
+
+  desc "Export your Eridu comments to Disqus"
   task :disqus do
     xml = Builder::XmlMarkup.new(:encoding => 'utf-8')
     xml.instruct! :xml, :version => '1.0', :encoding => 'UTF-8'
-    xml.rss :version => '2.0', :"xmlns:content" => 'http://purl.org/rss/1.0/modules/content/',
-                               :"xmlns:dsq" => 'http://www.disqus.com/',
-                               :"xmlns:dc" => 'http://purl.org/dc/elements/1.1/',
-                               :"xmlns:wp" => 'http://wordpress.org/export/1.0/' do
+    xml.rss :version => '2.0', :"xmlns:content" => 'http://purl.org/rss/1.0/modules/content/', :"xmlns:dsq" => 'http://www.disqus.com/', :"xmlns:dc" => 'http://purl.org/dc/elements/1.1/', :"xmlns:wp" => 'http://wordpress.org/export/1.0/' do
       xml.channel do
         for post in Post.all
           xml.item do
