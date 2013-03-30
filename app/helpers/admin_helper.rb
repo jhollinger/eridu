@@ -27,6 +27,6 @@ module AdminHelper
 
   # Returns true if the user is signed in, false if not
   def signed_in?
-    session[:token] and session[:salt] and MortalToken.new(session[:salt]) === session[:token]
+    session[:signed_in] == true
   end
 end

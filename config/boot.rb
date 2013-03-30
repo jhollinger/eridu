@@ -25,9 +25,6 @@ DataMapper.setup(:default, Conf[:database])
 Dir.glob(ROOT['app', 'models', '**', '*.rb']).each { |model| require model }
 DataMapper.finalize
 
-# Set secret token
-MortalToken.secret = Conf[:secret_token]
-
 # Load helpers and handlers
 Dir.glob(ROOT['app', 'helpers', '**', '*.rb']).each { |helper| require helper }
 Dir.glob(ROOT['app', 'handlers', '**', '*.rb']).sort.each { |handlers| require handlers }

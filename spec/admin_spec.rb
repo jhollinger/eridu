@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require 'spec_helper'
 
 describe 'Admin', :type => :request do
   it 'should disallow Dashboard access if user is not signed in' do

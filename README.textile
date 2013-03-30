@@ -30,7 +30,7 @@ h2. Philosophy
 * Textile is awesome
 * Everyone wants live comment preview, native reCAPTCHA'd or Disqus comments, email notifications, media upload, responsive layout, and syntax highlighting
 * Few really want multiple sites, authors, skins and arcane templating languages
-* You should be running Ruby 1.9
+* You should be running Ruby 2.0 or 1.9
 
 Framework choices aside, Eridu differs from its progenitor, Enki, mainly in the number of bundled features. These include reCAPTCHA comment protection, Disqus integration, email notifications, a responsive layout, simple media management, and syntax highlighting. While Enki leaves these "extras" as an exercise to the reader, Eridu pragmatically includes these de facto necessities.
 

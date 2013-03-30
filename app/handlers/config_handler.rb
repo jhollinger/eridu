@@ -1,7 +1,7 @@
 # Config for the main app (doesn't belong in AbstractHandler, because it only needs to be defined once)
 class ConfigHandler < AbstractHandler
   use Rack::MethodOverride
-  use Rack::Session::Cookie, :key => 'eridu.session', :httponly => true, :path => '/admin'
+  use Rack::Session::Cookie, :key => 'eridu.session', :httponly => true, :path => '/admin', :secret => Conf[:secret_token]
   use Rack::OpenID
   use Rack::Recaptcha, :public_key => Conf[:recaptcha, :public_key], :private_key => Conf[:recaptcha, :private_key] if Conf[:recaptcha]
 
