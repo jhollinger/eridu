@@ -5,7 +5,6 @@
     <meta name="viewport" content="initial-scale=1.0" />
     <title><%= title + ' / ' if title %><%= Conf[:title] %></title>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <%= tag 'script', '', :src => '/javascripts/lib.js', :invalidate => :src %>
 
     <%= tag 'link', nil, :href => '/stylesheets/front.css', :media => 'screen', :rel => 'stylesheet', :type => 'text/css', :invalidate => :href %>
