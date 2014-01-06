@@ -1,0 +1,16 @@
+---
+user: www-data
+group: www-data
+pid: eridu.pid
+timeout: 30
+wait: 10
+max_conns: 1024
+require: []
+
+environment: production
+max_persistent_conns: 512
+servers: 1
+daemonize: true
+port: 4000
+chdir: /srv/eridu
+tag: eridu
