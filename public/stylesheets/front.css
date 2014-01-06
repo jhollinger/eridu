@@ -76,17 +76,14 @@ article p { margin: 24px 0 }
 article .content p:first-child, article .content h3 + p, article .content h4 + p { margin-top: 10px }
 article .content p:last-child { margin-bottom: 0 }
 
-.post, .comment {
+.post {
   margin-bottom: 30px;
 }
 
-.post.teaser, .comment {
+.post.teaser {
   padding-left: 15px;
   border-left: 3px solid #e78305;
 }
-
-#new_comment label { margin-left: 1em }
-#new_comment textarea { height: 120px; width: 400px }
 
 img.left {
   float: left;
