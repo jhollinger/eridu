@@ -1,0 +1,190 @@
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentium Book Basic'), local('GentiumBookBasic'), url(http://themes.googleusercontent.com/static/fonts/gentiumbookbasic/v3/IRFxB2matTxrjZt6a3FUnsiUQA3_wO-qQTJfqhvSKS0.woff) format('woff');
+}
+
+body {
+  font-family: Gentium Book Basic, serif;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 15px;
+  font-weight: 300;
+  color: #2c2c2c;
+  cursor: default;
+}
+
+h1 { font-size: 20px }
+h1, h2, h3, h4 { margin: 0 }
+h2 { font-size: 24px }
+
+a { text-decoration: none }
+
+strong { font-weight: bold }
+
+pre {
+  white-space: pre-wrap;
+  padding: 10px;
+  background-color: #eee;
+}
+.CodeRay + .CodeRay pre { margin-top: -16px; }
+
+blockquote {
+  font-style: italic;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #444;
+}
+
+header, footer, section, article { display: block }
+
+#dox {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 220px;
+  padding-left: 25px;
+  padding-top: 30px;
+  margin: 0;
+  min-height: 400px;
+  box-shadow: 0px 0px 5px #aaa;
+  background: rgba(10,10,10,0.1);
+  background: -moz-linear-gradient(180deg, rgba(100,100,100,0.1), rgba(40,40,40,0.1));
+  background: -webkit-linear-gradient(180deg, rgba(100,100,100,0.1), rgba(40,40,40,0.1));
+}
+
+#dox a { color: #222 }
+#dox a:hover { border-bottom: 1px dotted #444 }
+
+#links {
+  margin-top: 100px;
+  font-size: 85%; 
+}
+#links .link { display: block }
+
+#main-container { margin-left: 250px; }
+
+#main {
+  margin: 0 auto 50px auto;
+  width: 800px;
+}
+
+#main a { color: #5f5757; font-weight: bold }
+
+#main > *:first-child { margin-top: 0px }
+
+article a:hover { text-decoration: underline }
+article header h2 a:hover { text-decoration: none }
+
+article p { margin: 24px 0 }
+article .content p:first-child, article .content h3 + p, article .content h4 + p { margin-top: 10px }
+article .content p:last-child { margin-bottom: 0 }
+
+.post, .comment {
+  margin-bottom: 30px;
+}
+
+.post.teaser, .comment {
+  padding-left: 15px;
+  border-left: 3px dotted #ccc;
+}
+
+#new_comment label { margin-left: 1em }
+#new_comment textarea { height: 120px; width: 400px }
+
+img.left {
+  float: left;
+  padding: 10px 15px 15px 0px;
+}
+
+.meta {
+  font-size: 80%;
+  color: #8c8c8c;
+}
+
+.sink {
+  position: absolute;
+  bottom: 30px;
+}
+.sink, .sink a { color: #8c8c8c !important }
+
+.hidden, .small { display: none; }
+
+/* responsiveness */
+
+@media (max-width: 1075px) {
+  #main {
+    margin: 0 auto 50px auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  body { padding: 0; margin: 0; }
+
+  .large { display: none; }
+  .small { display: block; }
+  
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+
+  .post.teaser, .comment { margin-left: -15px }
+  
+  #dox {
+    padding-left: 20px;
+    position: relative;
+    width: auto;
+    min-height: 70px;
+    height: 70px;
+    background: -moz-linear-gradient(90deg, rgba(100,100,100,0.1), rgba(40,40,40,0.1));
+    background: -webkit-linear-gradient(90deg, rgba(100,100,100,0.1), rgba(40,40,40,0.1));
+  }
+  
+  #links {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 100%; 
+  }
+  
+  #links .link {
+    display: inline;
+    margin-right: 10px;
+  }
+  #links .link:last-of-type { margin-right: 0 }
+
+  #links .link a {
+    border-bottom: 3px dotted #ccc;
+  }
+
+  #links .link a:hover {
+    border-bottom: 3px dotted #999;
+  }
+
+  #main {
+    margin: 10px 10px 50px 0;
+    width: 100%;
+  }
+  
+  #main-container {
+    margin: 0 10px 0 5px;
+    padding-left: 15px;
+  }
+  
+  #bars {
+    position: absolute;
+    top: 28px;
+    left: 110px;
+  }
+}
+
+@media (max-width: 500px) {
+  #links { display: none; }
+}
+
