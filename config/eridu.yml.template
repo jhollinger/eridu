@@ -5,15 +5,14 @@
 
 # About the author
 :author:
-  :name: Jim Jimmers               # For copyright notice and ATOM feeds
-  :email: jim.jimmers@eridublog.com # Exception and comment notification emails will go here, and it is used in ATOM feeds
-  :open_id:                        # These are used to login to the admin area
-    - http://foo.myopenid.com
-    - http://secondaryopenid.com
+  :name: Jim Jimmers
+  :email: jim.jimmers@eridublog.com
+  :username: admin
+  :password: admin
 
 # Links you want to share (optional)
 :links:
   :twitter: https://twitter.com/yourusername
 
-# A secret token used to protect your session. CHANGE IT!
-:secret_token: lasdfADSF9842jasdASFDdlkjasfd97124ADLJpqQWERjlkzxalsldfhj198L
+# To use Disqus for comments, create config/disqus.yml using this file as a template. Sign up for Disqus at http://disqus.com.
+:disqus: # your disqus shortname

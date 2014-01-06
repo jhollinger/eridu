@@ -11,18 +11,15 @@ class Post
   property :teaser_html, Text
   property :body, Text, :required => true
   property :body_html, Text, :required => true
-  property :comments_count, Integer, :default => 0, :required => true
   property :published_at, DateTime
   property :edited_at, DateTime, :required => true
   property :created_at, DateTime
   property :updated_at, DateTime
   property :deleted_at, ParanoidDateTime, :index => true
 
-  has n, :comments
   has_tags_on :tags
 
   before :valid?, :set_data!
-  before :destroy, :destroy_comments
 
   # Returns recently published Posts
   def self.recent(options = {})
@@ -73,11 +70,6 @@ class Post
     self.published_at = Chronic.parse(chronic_str) || Time.now
   end
 
-  def set_comments_count!
-    self.comments_count = comments.count
-    save!
-  end
-
   private
 
   def set_data!
@@ -98,9 +90,5 @@ class Post
     else
       nil
     end
-  end
-
-  def destroy_comments
-    comments.update! :deleted_at => Time.now
   end
 end

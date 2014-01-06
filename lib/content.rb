@@ -1,5 +1,5 @@
-# Common code for Posts, Pages and Comments
-module HTMLBody
+# Common code for Posts and Pages
+module Content
   def to_s
     body
   end
@@ -15,15 +15,6 @@ module HTMLBody
   def set_html!
     self.body_html = RedCloth.new(self.body.to_s).to_html
   end
-end
-
-# Common code for Posts and Pages
-module Content
-  def self.included(base)
-    base.send :include, HTMLBody
-  end
-
-  private
 
   def set_data!
     set_slug!

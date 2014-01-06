@@ -30,13 +30,13 @@ class AdminPostsAndPagesHandler < AbstractHandler
 
     # Form to edit an object
     get "/admin/#{thing}s/:id/?" do |id|
-      instance_variable_set(var, klass.get(id))
+      instance_variable_set(var, klass.get(id.to_i))
       admin_erb :"#{thing}s/edit"
     end
 
     # Updates an object
     put "/admin/#{thing}s/:id/?" do |id|
-      obj = instance_variable_set(var, klass.get(id))
+      obj = instance_variable_set(var, klass.get(id.to_i))
       obj.updated_at = Time.now # XXX workaround for https://github.com/datamapper/dm-tags/issues/4
       obj.attributes = params[thing.to_sym]
       if obj.save
@@ -48,7 +48,7 @@ class AdminPostsAndPagesHandler < AbstractHandler
 
     # Deletes an object
     delete "/admin/#{thing}s/:id/?" do |id|
-      obj = instance_variable_set(var, klass.get(id))
+      obj = instance_variable_set(var, klass.get(id.to_i))
       obj.destroy
       redirect "/admin/#{thing}s"
     end

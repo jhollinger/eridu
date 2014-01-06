@@ -1,4 +1,4 @@
-ROOT = lambda { |*paths| File.join(File.expand_path('../..', __FILE__), *paths) }
+ROOT = ->(*paths) { File.join(File.expand_path('../..', __FILE__), *paths) }
 APP_ENV = ENV['RACK_ENV'] ? ENV['RACK_ENV'].to_sym : :development
 
 # Load libraries and gems
@@ -8,19 +8,15 @@ require 'psych'
 require 'bundler/setup'
 Bundler.require(:default, APP_ENV)
 
-# Load everything in lib
-Dir.glob(ROOT['lib', '**', '*.rb']).each { |lib| require lib }
-Conf.load!
-
-# Set up mail
-Mail.defaults do
-  method = APP_ENV == :test ? :test : Conf[:mail, :method].to_sym
-  delivery_method method, Conf[:mail, :settings] || {}
-end if Conf[:mail]
+# Load config
+DB_CONFIG = Psych.load_file(ROOT['config', 'database.yml'])[APP_ENV]
+Conf = Psych.load_file(ROOT['config', 'eridu.yml'])
 
 # Initialize database connection
 DataMapper::Logger.new($stdout, :debug) if APP_ENV == :development
-DataMapper.setup(:default, Conf[:database])
+DataMapper.setup(:default, DB_CONFIG)
+# Load everything in lib
+Dir.glob(ROOT['lib', '**', '*.rb']).each { |lib| require lib }
 # Load models
 Dir.glob(ROOT['app', 'models', '**', '*.rb']).each { |model| require model }
 DataMapper.finalize

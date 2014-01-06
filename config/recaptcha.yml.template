@@ -1,6 +1,0 @@
-# To enable reCAPTCHA for comments, create config/recaptcha.yml using this file as a template.
-# Sign up for reCAPTCHA at http://www.google.com/recaptcha
-# NOTE: This is only available when using native comments, *not* when using Disqus
-
-:public_key: dummy
-:private_key: dummy

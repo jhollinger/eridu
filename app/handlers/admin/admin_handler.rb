@@ -5,51 +5,17 @@ class AdminHandler < AbstractHandler
 
   # Restrict access to /admin
   before '/admin/*' do
-    redirect '/admin' unless signed_in? or request.path == '/admin/login'
+    require_sign_in! unless signed_in?
   end
 
   # Dashboard (or login form)
   get '/admin/?' do
     if signed_in?
       @posts = Post.recent
-      @comments = Comment.recent.group_by &:post unless Conf[:disqus]
       admin_erb :dashboard
     else
-      admin_erb :login
+      require_sign_in!
     end
-  end
-
-  # Login form
-  get '/admin/login/?' do
-    admin_erb :login
-  end
-
-  # Login
-  post '/admin/login/?' do
-    success = if !Eridu.production? && params[:bypass]
-      true
-    else
-      if resp = request.env[Rack::OpenID::RESPONSE]
-        resp.status == :success && Conf[:author, :open_id].include?(resp.identity_url)
-      else
-        headers 'WWW-Authenticate' => Rack::OpenID.build_header(:identifier => params['openid_identifier'])
-        throw :halt, [401, 'got openid?']
-      end
-    end
-
-    if success
-      session.clear
-      session[:signed_in] = true
-      redirect('/admin')
-    else
-      admin_erb(:login)
-    end
-  end
-
-  # Logout
-  get '/admin/logout/?' do
-    session.clear
-    redirect '/admin'
   end
 
   # Preview Textile as HTML

@@ -25,35 +25,6 @@
 <% end %>
 </div>
 
-<% unless Conf[:disqus] %>
-<div class="box">
-  <h2>Comments</h2>
-<% if @comments.empty? %>
-  <em>Empty</em>
-<% else %>
-  <table>
-    <tr class="shiny">
-      <th>Author</th>
-      <th>Post</th>
-      <th>Comment</th>
-      <th></th>
-    </tr>
-  <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment.author %></td>
-      <td><%= comment.title %></td>
-      <td><%= link_to h(comment.body[0,50]), preview_comment_path(comment), :class => 'preview', :rel => '#overlay' %>...</td>
-      <td>
-        <%= link_to icon_tag(:restore), restore_comment_path(comment), :method => 'put', :confirm => "Do you want to restore #{comment.author}'s comment?" %>
-        <%= link_to icon_tag(:delete), purge_comment_path(comment), :method => 'delete', :confirm => "Are you sure you want to PERMANENTLY DELETE this comment by #{comment.author}?" %>
-      </td>
-    </tr>
-  <% end %>
-  </table>
-<% end %>
-</div>
-<% end %>
-
 <div class="box">
   <h2>Pages</h2>
 <% if @pages.empty? %>

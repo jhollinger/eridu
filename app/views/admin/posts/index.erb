@@ -7,9 +7,6 @@
       <th>Title</th>
       <th>Excerpt</th>
       <th>Published</th>
-      <% unless Conf[:disqus] %>
-      <th>Comments</th>
-      <% end %>
       <th></th>
     </tr>
 
@@ -19,9 +16,6 @@
       <td><%= link_to post.title, permalink_path(post) %></td>
       <td><%= h post.blurb %></td>
       <td class="light"><%= post.published_at.strftime("%b %e#{', %Y' unless post.published_at.year == today.year}") %></td>
-      <% unless Conf[:disqus] %>
-      <td><%= post.comments_count %></td>
-      <% end %>
       <td>
         <%= link_to icon_tag(:edit), admin_post_path(post) %>
         <%= link_to icon_tag(:delete), admin_post_path(post), :method => :delete, :confirm => "Are you sure you want to delete #{post.title}" %>

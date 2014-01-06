@@ -9,25 +9,8 @@
       <tr>
         <td><%= link_to post.title, admin_post_path(post) %></td>
         <td class="light"><%= post.published_at.strftime("%b %e#{', %Y' unless post.published_at.year == today.year}") %></td>
-        <% unless Conf[:disqus] %>
-        <td><%= link_to post.comments_count, permalink_path(post) %></td>
-        <% end %>
       </tr>
     <% end %>
     </table>
   </div>
-
-  <% unless Conf[:disqus] %>
-  <div class="box">
-    <h2>Latest Comments</h2>
-    <table>
-    <% @comments.each do |post, comments| %>
-      <tr>
-        <td><%= link_to post.title, permalink_path(post) %><br />&nbsp;<%= comments.map { |c| link_to c.author, admin_comment_path(c) }.join(', ') %></td>
-        <td class="light"><%= post.published_at.strftime("%b %e#{', %Y' unless post.published_at.year == today.year}") %></td>
-      </tr>
-    <% end %>
-    </table>
-  </div>
-  <% end %>
 </div>

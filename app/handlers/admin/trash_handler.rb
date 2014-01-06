@@ -10,15 +10,13 @@ class AdminTrashHandler < AbstractHandler
 
   get '/admin/trash/?' do
     @posts = db('select id, title, body from posts where deleted_at is not null order by published_at desc')
-    @comments = db('select c.id, c.author, c.body, p.title from comments c left outer join posts p on c.post_id=p.id where c.deleted_at is not null order by c.created_at desc') unless Conf[:disqus]
     @pages = db('select id, title, body from pages where deleted_at is not null order by title')
     title 'Trash'
     admin_erb :trash
   end
 
-  # Create identical handlers for Posts, Comments and Pages
+  # Create identical handlers for Posts and Pages
   klasses = [Post, Page]
-  klasses << Comment unless Conf[:disqus]
   klasses.each do |klass|
     thing = klass.name.downcase
 

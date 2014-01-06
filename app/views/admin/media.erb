@@ -23,6 +23,7 @@
   // Initialize dropbox
   if ( typeof(FileReader) != "undefined" ) {
     var dropbox = new Dropbox(box, '/admin/media')
+    dropbox.max_concurrent = 2;
     dropbox.success = function(file, filepath) {
       $('#media').append('<tr><td><a href="'+filepath+'">'+filepath+'</a></td>'+
         '<td><a href="/admin'+filepath+'" data-method="delete" data-confirm="Are you sure you want to delete '+filepath+'?"><%= icon_tag :delete %></a></td></tr>')

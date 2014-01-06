@@ -3,10 +3,7 @@
       <h2><%= link_to post.title, permalink_path(post) %></h2>
       <span class="meta">
         <%= post.published_at.strftime('%B %e, %Y') %> <%= '|' unless post.tag_list.empty? %>
-        <%= post.tag_list.map { |tag| link_to tag, "/#{tag}" }.join(', ') %> <%= '|' unless Conf[:disqus] %>
-        <% unless Conf[:disqus] %>
-        <%= num = post.comments.count; link_to "#{num} comment#{'s' unless num == 1}", permalink_path(post, '#comments') %>
-        <% end %>
+        <%= post.tag_list.map { |tag| link_to tag, "/#{tag}" }.join(', ') %>
       </span>
     </header>
 

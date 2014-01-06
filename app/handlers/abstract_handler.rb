@@ -8,7 +8,6 @@ class AbstractHandler < Sinatra::Base
   helpers do
     include Helpers
     include HTMLHelpers
-    include Rack::Recaptcha::Helpers if Conf[:recaptcha]
     alias_method :h, :escape_html
   end
 end

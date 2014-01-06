@@ -10,8 +10,8 @@ xml.feed :"xml:lang" => 'en-US', :xmlns => 'http://www.w3.org/2005/Atom' do
   xml.updated @posts.first.published_at unless @posts.empty?
 
   xml.author do
-    xml.name Conf[:author, :name]
-    xml.email Conf[:author, :email]
+    xml.name Conf[:author][:name]
+    xml.email Conf[:author][:email]
   end
 
   for post in @posts
@@ -28,7 +28,7 @@ xml.feed :"xml:lang" => 'en-US', :xmlns => 'http://www.w3.org/2005/Atom' do
       end
 
       xml.author do
-        xml.name Conf[:author, :name]
+        xml.name Conf[:author][:name]
       end
     end
   end
