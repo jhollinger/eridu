@@ -1,6 +1,6 @@
 source 'http://rubygems.org/'
 
-gem 'sinatra', '1.3.2', :require => 'sinatra/base'
+gem 'sinatra', '1.4.4', :require => 'sinatra/base'
 gem 'dm-core'
 gem 'dm-sqlite-adapter'
 gem 'dm-types', '>=1.2.1'
@@ -23,8 +23,4 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'dm-transactions'
-end
-
-group :development do
-  gem 'sinatra-reloader', :require => 'sinatra/reloader'
 end
