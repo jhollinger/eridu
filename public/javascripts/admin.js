@@ -26,6 +26,15 @@ function bind_textile_preview(button) {
   })
 }
 
+// Fetch a Textile preview and place it in preview_pane
+function fetch_textile_preview(textarea, preview_pane) {
+  jQuery.post('/textile-preview',
+    {body: $(textarea).val()},
+    function(result) { $(preview_pane).html(result) },
+    'html'
+  )
+}
+
 // Convert a link to a form and submit it
 function handle_method(link) {
   var url = link.attr('href'),
