@@ -41,7 +41,7 @@ h2. Philosophy
 * Few really want multiple sites, authors, skins and arcane templating languages
 * You should be running Ruby 2.0 by now
 
-Framework choices aside, Eridu differs from its progenitor, Enki, mainly in the number of bundled features. These include optional Disqus integration, a responsive layout, simple yet elegent media management, and syntax highlighting. While Enki leaves these "extras" as an exercise to the reader, Eridu pragmatically includes these de facto necessities.
+Framework choices aside, Eridu differs from its progenitor, Enki, mainly in the number of bundled features. These include optional Disqus integration, a responsive layout, simple yet elegent media management, syntax highlighting, and themes (each theme is just a css file). While Enki leaves these "extras" as an exercise to the reader, Eridu pragmatically includes these de facto necessities.
 
 h2. Syntax Highlighting with Coderay Plugin for Textile
 
