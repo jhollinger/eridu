@@ -1,9 +1,8 @@
 module RSpecHelpers
   # Sign in as admin
   def as_admin
+    page.driver.browser.basic_authorize(Conf[:author][:username], Conf[:author][:password])
     visit '/admin'
-    check 'Bypass credentials'
-    click_button 'Login with OpenID'
   end
 end
 
