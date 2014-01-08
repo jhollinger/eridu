@@ -26,7 +26,7 @@ module AdminHelper
   # Returns true if the user is signed in, false if not
   def signed_in?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [Conf[:author][:username], Conf[:author][:password]]
+    @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [E[:author][:username], E[:author][:password]]
   end
 
   def require_sign_in!

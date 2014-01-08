@@ -2,6 +2,6 @@
   <%= erb :"posts/_show", :locals => {:post => @post} %>
 </section>
 
-<% if Conf[:disqus] %>
+<% if E[:disqus] %>
 <%= erb :"posts/_disqus" %>
 <% end %>

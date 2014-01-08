@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0" />
-    <title><%= title + ' / ' if title %><%= Conf[:title] %></title>
+    <title><%= title + ' / ' if title %><%= E[:title] %></title>
 
     <%= tag 'script', '', :src => '/javascripts/lib.js', :invalidate => :src %>
 
-    <%= tag 'link', nil, :href => "/stylesheets/themes/#{Conf[:theme]}.css", :media => 'screen', :rel => 'stylesheet', :type => 'text/css', :invalidate => :href %>
+    <%= tag 'link', nil, :href => "/stylesheets/themes/#{E[:theme]}.css", :media => 'screen', :rel => 'stylesheet', :type => 'text/css', :invalidate => :href %>
     <link href="/posts.atom" rel="alternate" title="ATOM" type="application/atom+xml">
     <link href="/icon.png" rel="icon" type="image/png">
   </head>
 
   <body>
     <header id="dox">
-      <h1><a href="/"><%= Conf[:title] %></a></h1>
-      <span class="meta"><%= Conf[:tagline] %></span>
+      <h1><a href="/"><%= E[:title] %></a></h1>
+      <span class="meta"><%= E[:tagline] %></span>
 
       <div id="links">
       <% header_links.each do |title, url| %>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="large meta sink">
-        <a class="obfuscated"><%= obfuscate Conf[:author][:email] %></a><br />
+        <a class="obfuscated"><%= obfuscate E[:author][:email] %></a><br />
         <a href="http://github.com/jhollinger/eridu">powered by eridu</a>
       </div>
     </header>

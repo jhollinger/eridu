@@ -22,7 +22,7 @@ module Helpers
 
   # Returns an array of links for the header
   def header_links
-    [%w[home /], %w[archives /archives], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *Conf[:links]]
+    [%w[home /], %w[archives /archives], *Page.ordered.map { |p| [p.title.downcase, page_path(p)] }, *E[:links]]
   end
 
   # Obfuscate an email address
