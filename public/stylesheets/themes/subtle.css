@@ -85,6 +85,7 @@ article header h2 a:hover { text-decoration: none }
 article p { margin: 24px 0 }
 article .content p:first-child, article .content h3 + p, article .content h4 + p { margin-top: 10px }
 article .content p:last-child { margin-bottom: 0 }
+article .content img { max-width: 100% }
 
 .post, .comment {
   margin-bottom: 30px;
