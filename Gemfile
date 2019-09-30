@@ -1,6 +1,6 @@
 source 'http://rubygems.org/'
 
-gem 'sinatra', '1.4.4', :require => 'sinatra/base'
+gem 'sinatra', '2.0', require: 'sinatra/base'
 gem 'thin'
 gem 'dm-core'
 gem 'dm-sqlite-adapter'
@@ -11,9 +11,10 @@ gem 'dm-aggregates'
 gem 'dm-migrations'
 gem 'dm-tags'
 gem 'chronic'
-gem 'RedCloth', :require => 'redcloth'
-gem 'coderay', :require => %w[coderay coderay/for_redcloth]
+gem 'RedCloth', require: 'redcloth'
+gem 'coderay', require: %w[coderay coderay/for_redcloth]
 gem 'builder'
+gem 'rake'
 
 group :test do
   gem 'rspec'

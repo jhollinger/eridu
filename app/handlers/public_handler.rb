@@ -10,7 +10,7 @@ class PublicHandler < AbstractHandler
   end
 
   # A post
-  get %r{^/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/?$} do |year, month, day, slug|
+  get %r{/([0-9]{4})/([0-9]{2})/([0-9]{2})/([^/]+)/?} do |year, month, day, slug|
     @post = Post.find_by_permalink(year, month, day, slug)
     title @post.title
     erb :"posts/show"
@@ -31,7 +31,7 @@ class PublicHandler < AbstractHandler
   end
 
   # Recently tagged posts and Atom feed
-  get %r{^/(\w+)(\.atom)?/?$} do |tag, atom|
+  get %r{/(\w+)(\.atom)?/?} do |tag, atom|
     @tag = tag
     @posts = @tag == 'posts' ? Post.recent : Post.recent.tagged_with(@tag)
     title @tag.capitalize
