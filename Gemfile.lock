@@ -64,7 +64,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     public_suffix (4.0.1)
     rack (2.0.7)
-    rack-protection (2.0.0)
+    rack-protection (2.0.2)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -83,10 +83,10 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
-    sinatra (2.0.0)
+    sinatra (2.0.2)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.0)
+      rack-protection (= 2.0.2)
       tilt (~> 2.0)
     stringex (1.5.1)
     thin (1.7.2)
@@ -119,7 +119,7 @@ DEPENDENCIES
   dm-validations
   rake
   rspec
-  sinatra (= 2.0)
+  sinatra (= 2.0.2)
   thin
 
 BUNDLED WITH
