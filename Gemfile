@@ -1,6 +1,6 @@
 source 'http://rubygems.org/'
 
-gem 'sinatra', '2.0', require: 'sinatra/base'
+gem 'sinatra', '2.0.2', require: 'sinatra/base'
 gem 'thin'
 gem 'dm-core'
 gem 'dm-sqlite-adapter'
